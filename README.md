@@ -1,1 +1,1 @@
-# ClothesMyGod
+# ClothesMyGod (옷마이갓)
