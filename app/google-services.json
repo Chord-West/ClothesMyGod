@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "40016650937",
+    "firebase_url": "https://clothesmygod.firebaseio.com",
+    "project_id": "clothesmygod",
+    "storage_bucket": "clothesmygod.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:40016650937:android:435bc8254b79608b163168",
+        "android_client_info": {
+          "package_name": "com.example.clothesmygod"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "40016650937-d758rfp95vls9im0tdo6dicijlb5nd5s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbYF0g4ySGt-yKRA1vmcf9FMx1OObB1U8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "40016650937-d758rfp95vls9im0tdo6dicijlb5nd5s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
