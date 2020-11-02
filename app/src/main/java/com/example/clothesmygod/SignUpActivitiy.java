@@ -50,29 +50,38 @@ public class SignUpActivitiy extends AppCompatActivity {
     private void updateUI(FirebaseUser currentUser) {
     }
     private void singUp(){
-        EditText emailText = findViewById(R.id.signup_email);
-        EditText passwordText = findViewById(R.id.signup_password);
-        String email =  emailText.getText().toString();
-        String password = passwordText.getText().toString();
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(SignUpActivitiy.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                            updateUI(null);
-                        }
+        String email =  ((EditText)findViewById(R.id.signup_email)).getText().toString();
+        String password = ((EditText)findViewById(R.id.signup_password)).getText().toString();
+        String passwordCheck = ((EditText)findViewById(R.id.signup_passconfirm)).getText().toString();
 
-                        // ...
-                    }
-                });
+        if(email.length()>0&&password.length()>0&&passwordCheck.length()>0) //null 값 체크
+        {
+            // 패스워드 같을 때만 회원가입 완료되게
+            if (password.equals(passwordCheck)) {
+                mAuth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    // 회원가입 성공시
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    Toast.makeText(SignUpActivitiy.this, "회원가입이 성공했습니다.", Toast.LENGTH_SHORT).show();
+                                    updateUI(user);
+                                } else {
+                                    //회원가입 실패시
+                                    Toast.makeText(SignUpActivitiy.this, "회원가입이 실패했습니다.", Toast.LENGTH_SHORT).show();
+                                    updateUI(null);
+                                }
+
+                                // ...
+                            }
+                        });
+            } else {
+                Toast.makeText(SignUpActivitiy.this, "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            Toast.makeText(SignUpActivitiy.this, "이메일또는 비밀번호를 입력해주세요", Toast.LENGTH_SHORT).show();
+        }
+
     }
 }
