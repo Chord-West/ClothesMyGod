@@ -15,8 +15,9 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.clothesmygod.R;
 
 public class HomeFragment extends Fragment {
+    //프레그먼트에 생명주기
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        return new View(getActivity());
+        return inflater.inflate(R.layout.fragment_home,container,false);
     }
 }
