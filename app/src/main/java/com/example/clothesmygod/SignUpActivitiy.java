@@ -17,13 +17,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class SignUpActivitiy extends AppCompatActivity {
-    private FirebaseAuth mAuth; //파이어베이스 인증 연동 ( 현서 )
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance(); //파이어베이스 인증 연동 ( 현서 )
     private static final String TAG = "SignUpActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-        mAuth = FirebaseAuth.getInstance();
+
         findViewById(R.id.signup_btn).setOnClickListener(onClickListener); // 회원가입 버튼 클릭시 메소드 실행
     }
 
@@ -42,13 +42,9 @@ public class SignUpActivitiy extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
     }
 
-    private void updateUI(FirebaseUser currentUser) {
-    }
     private void singUp(){
         String email =  ((EditText)findViewById(R.id.signup_email)).getText().toString();
         String password = ((EditText)findViewById(R.id.signup_password)).getText().toString();
@@ -66,14 +62,12 @@ public class SignUpActivitiy extends AppCompatActivity {
                                     // 회원가입 성공시
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     Toast.makeText(SignUpActivitiy.this, "회원가입이 성공했습니다.", Toast.LENGTH_SHORT).show();
-                                    updateUI(user);
+                                    Intent intent = new Intent(SignUpActivitiy.this,LoginActivity.class);
+                                    startActivity(intent);
                                 } else {
                                     //회원가입 실패시
                                     Toast.makeText(SignUpActivitiy.this, "회원가입이 실패했습니다.", Toast.LENGTH_SHORT).show();
-                                    updateUI(null);
                                 }
-
-                                // ...
                             }
                         });
             } else {

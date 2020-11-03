@@ -1,36 +1,31 @@
 package com.example.clothesmygod;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class MainActivity extends AppCompatActivity {
-    private Button signup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        findViewById(R.id.main_signup_btn).setOnClickListener(onClickListener); // 회원가입 버튼 클릭시 메소드 실행
-        findViewById(R.id.main_signin_btn).setOnClickListener(onClickListener); // 로그인 버튼 클릭시 메소드 실행
+        BottomNavigationView navView = findViewById(R.id.nav_view);
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
+                .build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        NavigationUI.setupWithNavController(navView, navController);
     }
-
-
-    //클릭 이벤트 Switch 문으로 넘겨진 id 값에 따라 메소드 처리 ( 현서 )
-    View.OnClickListener onClickListener = new View.OnClickListener(){
-
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()){
-                case R.id.main_signup_btn:
-                    Intent intent = new Intent(MainActivity.this,SignUpActivitiy.class);
-                    startActivity(intent);
-                    break;
-                case R.id.main_signin_btn:
-                    break;
-            }
-        }
-    };
 }

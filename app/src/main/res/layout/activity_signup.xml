@@ -25,7 +25,13 @@
             android:inputType="textEmailAddress"
             android:layout_marginBottom="10dp"
             android:hint="이메일"/>
-
+        <EditText
+            android:id="@+id/signup_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:layout_marginBottom="10dp"
+            android:hint="이름"/>
         <EditText
             android:id="@+id/signup_password"
             android:layout_width="match_parent"
