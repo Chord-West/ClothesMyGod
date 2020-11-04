@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "40016650937",
-    "firebase_url": "https://clothesmygod.firebaseio.com",
-    "project_id": "clothesmygod",
-    "storage_bucket": "clothesmygod.appspot.com"
+    "project_number": "289957248577",
+    "firebase_url": "https://cmgod-4ba0d.firebaseio.com",
+    "project_id": "cmgod-4ba0d",
+    "storage_bucket": "cmgod-4ba0d.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:40016650937:android:435bc8254b79608b163168",
+        "mobilesdk_app_id": "1:289957248577:android:009c5c1d3ba343a86d10c0",
         "android_client_info": {
           "package_name": "com.example.clothesmygod"
         }
       },
       "oauth_client": [
         {
-          "client_id": "40016650937-d758rfp95vls9im0tdo6dicijlb5nd5s.apps.googleusercontent.com",
+          "client_id": "289957248577-7g560pmehcp4j99emmmpa8svar8n76q6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCbYF0g4ySGt-yKRA1vmcf9FMx1OObB1U8"
+          "current_key": "AIzaSyDNhpJSKDccrBF5uCsmlj2NcT11bfufSXQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "40016650937-d758rfp95vls9im0tdo6dicijlb5nd5s.apps.googleusercontent.com",
+              "client_id": "289957248577-7g560pmehcp4j99emmmpa8svar8n76q6.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
