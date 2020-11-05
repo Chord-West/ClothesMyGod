@@ -28,7 +28,15 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.main_home_btn).setOnClickListener(onClickListener);
         findViewById(R.id.main_dashbord_btn).setOnClickListener(onClickListener);
         findViewById(R.id.main_profile_btn).setOnClickListener(onClickListener);
-
+        Button logout_btn = (Button)findViewById(R.id.main_logout_btn);
+        logout_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
     //클릭 이벤트 Switch 문으로 넘겨진 id 값에 따라 메소드 처리 ( 현서 )
     View.OnClickListener onClickListener = new View.OnClickListener(){
