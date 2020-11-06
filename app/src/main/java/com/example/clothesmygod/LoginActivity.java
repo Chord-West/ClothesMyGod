@@ -3,7 +3,9 @@ package com.example.clothesmygod;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -61,6 +63,15 @@ public class LoginActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             // 로그인 성공시
                             if (task.isSuccessful()) {
+                                FirebaseUser user =mAuth.getCurrentUser();
+                                String currentUserEmail=user.getEmail();
+
+                                //공유 환경에서 데이터 읽기위한 SharedPreferences (키 값 데이터 저장)
+                                SharedPreferences sharedPref = getSharedPreferences("shared",Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPref.edit();
+                                editor.putString("email",currentUserEmail);// 로그인 성공하면 user의 email Porofile fragment로 보냄
+                                editor.commit();
+
                                 Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                                 startActivity(intent);
                             } else {
