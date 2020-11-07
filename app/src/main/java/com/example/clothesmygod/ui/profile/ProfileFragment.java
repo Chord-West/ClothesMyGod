@@ -52,7 +52,7 @@ public class ProfileFragment extends Fragment {
         System.out.println(currentUserEmail);
 
         mStorageRef = FirebaseStorage.getInstance().getReference(); //storage 인스턴스
-        //  유저에게 갤러이에 접근할 수 있게 권한 요청하는 작업
+        //  유저에게 갤러리에 접근할 수 있게 권한 요청하는 작업
         if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_CONTACTS) !=
                 PackageManager.PERMISSION_GRANTED) {
             if(ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),Manifest.permission.READ_EXTERNAL_STORAGE)){

@@ -1,16 +1,12 @@
-package com.example.clothesmygod.ui.dashboard;
+package com.example.clothesmygod.ui.mycloset;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.clothesmygod.Model.PostData;
 import com.example.clothesmygod.R;
@@ -19,11 +15,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DashboardAdapter extends BaseAdapter {
+public class MyClosetAdapter extends BaseAdapter {
     private List<PostData> mData;
     private Map<String,Integer> mdataImageMap;
 
-    public DashboardAdapter(List<PostData> data){
+    public MyClosetAdapter(List<PostData> data){
         this.mData=data;
         mdataImageMap = new HashMap<>();
         mdataImageMap.put("test1", R.drawable.ic_dashboard_black_24dp);
@@ -48,23 +44,23 @@ public class DashboardAdapter extends BaseAdapter {
         ViewHolder holder;
         if(convertView==null){
             holder = new ViewHolder();
-            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.dashboard_item,parent,false);
-            ImageView dashboardImage = convertView.findViewById(R.id.dashboard_item_image);
-            TextView dashboardTitle= convertView.findViewById(R.id.dashboard_item_title);
-            TextView dashboardContent= convertView.findViewById(R.id.dashboard_item_content);
-            CheckBox checkBox = convertView.findViewById(R.id.dashboard_item_checkBox);
-            holder.dashboardImage=dashboardImage;
-            holder.dashboardTitle=dashboardTitle;
-            holder.dashboardContent= dashboardContent;
+            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.mycloset_item,parent,false);
+            ImageView myclosetImage = convertView.findViewById(R.id.mycloset_item_image);
+            TextView myclosetTitle= convertView.findViewById(R.id.mycloset_item_title);
+            TextView myclosetContent= convertView.findViewById(R.id.mycloset_item_content);
+            CheckBox checkBox = convertView.findViewById(R.id.mycloset_item_checkBox);
+            holder.myclosetImage=myclosetImage;
+            holder.myclosetTitle=myclosetTitle;
+            holder.myclosetContent= myclosetContent;
             holder.checkBox=checkBox;
             convertView.setTag(holder);
         }else{
             holder = (ViewHolder) convertView.getTag();
         }
         PostData postData = mData.get(position);
-        holder.dashboardTitle.setText(postData.getTitle());
-        holder.dashboardContent.setText(postData.getContents());
-        holder.dashboardImage.setImageResource(mdataImageMap.get(postData.getContents()));
+        holder.myclosetTitle.setText(postData.getTitle());
+        holder.myclosetContent.setText(postData.getContents());
+        holder.myclosetImage.setImageResource(mdataImageMap.get(postData.getContents()));
         holder.checkBox.setChecked(postData.isCheck());
         holder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,9 +73,9 @@ public class DashboardAdapter extends BaseAdapter {
         return convertView;
     }
     static class ViewHolder{
-        ImageView dashboardImage;
-        TextView dashboardTitle;
-        TextView dashboardContent;
+        ImageView myclosetImage;
+        TextView myclosetTitle;
+        TextView myclosetContent;
         CheckBox checkBox;
     }
 }
