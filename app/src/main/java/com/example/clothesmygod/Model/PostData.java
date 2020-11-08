@@ -1,32 +1,25 @@
 package com.example.clothesmygod.Model;
 
+import android.graphics.Bitmap;
+
 public class PostData {
-    private String documentId;
+    private String uid;
     private String title;
-    private String contents;
-    private boolean check=false;
+    private Bitmap bitmap;
+
+
+    public PostData(String uid, String title) {
+        this.uid = uid;
+        this.title = title;
+    }
     public PostData(){}
 
-    public boolean isCheck() {
-        return check;
+    public String getUid() {
+        return uid;
     }
 
-    public void setCheck(boolean check) {
-        this.check = check;
-    }
-
-    public PostData(String documentId, String title, String contents) {
-        this.documentId = documentId;
-        this.title = title;
-        this.contents = contents;
-    }
-
-    public String getDocumentId() {
-        return documentId;
-    }
-
-    public void setDocumentId(String documentId) {
-        this.documentId = documentId;
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getTitle() {
@@ -37,13 +30,13 @@ public class PostData {
         this.title = title;
     }
 
-    public String getContents() {
-        return contents;
-    }
 
-    public void setContents(String contents) {
-        this.contents = contents;
-    }
+
+
+
+
+
+
 
 
 }

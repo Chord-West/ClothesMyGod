@@ -30,10 +30,10 @@
             android:layout_weight="1"
             android:text="내옷장"/>
         <Button
-            android:id="@+id/main_profile_btn"
+            android:id="@+id/main_calendar_btn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="프로필"/>
+            android:text="캘린더"/>
     </LinearLayout>
 </RelativeLayout>

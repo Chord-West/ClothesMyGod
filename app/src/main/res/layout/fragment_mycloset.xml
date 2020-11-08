@@ -24,9 +24,39 @@
             android:layout_weight="1"/>
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/mycloset_all_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="전체"/>
+        <Button
+            android:id="@+id/mycloset_top_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="상의"/>
+        <Button
+            android:id="@+id/mycloset_bottom_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="하의"/>
+        <Button
+            android:id="@+id/mycloset_shoes_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="신발"/>
 
+    </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="120dp"
         android:id="@+id/mycloset_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="450dp"

@@ -23,7 +23,7 @@
             android:id="@+id/card_item_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="30dp"
+            android:textSize="20dp"
             tools:text="Contents"/>
 
     </LinearLayout>

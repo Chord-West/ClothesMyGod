@@ -5,10 +5,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -24,12 +22,12 @@ import android.widget.Toast;
 
 import com.example.clothesmygod.MainActivity;
 import com.example.clothesmygod.R;
-import com.example.clothesmygod.ui.home.HomeFragment;
-import com.example.clothesmygod.ui.profile.ProfileFragment;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -46,6 +44,7 @@ public class PostClothesActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth; // 현재 유저정보 불러오기 위한 메소드
     FirebaseUser currentUser; // 현재 유저에 storage 저장
+    private DatabaseReference mDatabase;
 
     ImageView postImage; // 내 옷장에 업로드할 이미지 선택
     Button postClothesBtn; // 마지막 등록 버튼
@@ -61,6 +60,8 @@ public class PostClothesActivity extends AppCompatActivity {
         // 유저정보 인스턴스화
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         // firebase storage 인스턴스화
         mStorageRef = FirebaseStorage.getInstance().getReference();
@@ -98,7 +99,10 @@ public class PostClothesActivity extends AppCompatActivity {
 
                 if(closet_catrgory!=null&&postname!=null){
                     //         user//user.Uid(유저키) // 카테고리(상의,하의,신발) // 입력한 이름으로 저장
-                    StorageReference postRef = mStorageRef.child("users").child(currentUser.getUid()).child(closet_catrgory).child(postname);
+                    StorageReference postRef = mStorageRef.child("users").child(currentUser.getUid()).child(postname);
+
+                    mDatabase.child("users").child(currentUser.getUid()).child(closet_catrgory).push().setValue(postname);
+                    mDatabase.child("users").child(currentUser.getUid()).child("all").push().setValue(postname);
 
                     //(파이어베이스 메소드 )
                     postRef.putFile(image) // 이미지 파일 삽입

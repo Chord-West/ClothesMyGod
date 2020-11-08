@@ -5,37 +5,86 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.clothesmygod.Model.PostData;
 import com.example.clothesmygod.R;
-import com.example.clothesmygod.ui.home.HomeFragment;
-import com.example.clothesmygod.ui.profile.ProfileFragment;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
 public class MyClosetFragment extends Fragment{
     private View view;
+    StorageReference mStorageRef;
+    private String category = "all"; // 기본 default
+
+    private FirebaseAuth mAuth; // 현재 유저정보 불러오기 위한 메소드
+    FirebaseUser currentUser; // 현재 유저에 storage 저장
+    FirebaseDatabase database; //User가 가지고있는 옷들 가져오기위한 작엄
+    DatabaseReference userclothesRef;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_mycloset,container,false);
+        mStorageRef = FirebaseStorage.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+        database = FirebaseDatabase.getInstance();
+
+        userclothesRef = database.getReference().child("users").child(currentUser.getUid());
+
 
         view.findViewById(R.id.mycloset_post_btn).setOnClickListener(onClickListener); // 옷등록 버튼
-        ArrayList<PostData> postData = new ArrayList<>();
+
+
+
+
         // 등록된 옷을 나열하기 위한 recycler view
-        RecyclerView recyclerView = view.findViewById(R.id.mycloset_recyclerView);
-        // 가로로 나오게 하기위한 설정
+        final RecyclerView recyclerView = view.findViewById(R.id.mycloset_recyclerView);
+//        // 가로로 나오게 하기위한 설정
         RecyclerView.LayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager); // 레이아웃 메니저를 선언해야 recyclerview 작동
 
-        MyClosetAdapter adapter = new MyClosetAdapter(dataList);
-        recyclerView.setAdapter(adapter);
+   ;
+
+        ValueEventListener mValueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                final ArrayList<PostData> dataList = new ArrayList<>();
+                dataList.clear();
+                for (final DataSnapshot datasnapshot : snapshot.child(category).getChildren()) { ;
+                    final String clothes= datasnapshot.getValue().toString();
+                    PostData postData = new PostData(currentUser.getUid(),clothes);
+                    dataList.add(postData);
+                }
+                MyClosetAdapter adapter = new MyClosetAdapter(dataList);
+                recyclerView.setAdapter(adapter);
+
+
+                view.findViewById(R.id.mycloset_all_btn).setOnClickListener(onClickListener);
+                view.findViewById(R.id.mycloset_top_btn).setOnClickListener(onClickListener);
+                view.findViewById(R.id.mycloset_bottom_btn).setOnClickListener(onClickListener);
+                view.findViewById(R.id.mycloset_shoes_btn).setOnClickListener(onClickListener);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                System.out.println("error");
+            }
+        };
+        userclothesRef.addValueEventListener(mValueEventListener);
+
         return view;
     }
     View.OnClickListener onClickListener = new View.OnClickListener(){
@@ -45,6 +94,22 @@ public class MyClosetFragment extends Fragment{
                 case R.id.mycloset_post_btn:
                     Intent intent = new Intent(getActivity(),PostClothesActivity.class);
                     startActivity(intent);
+                    break;
+                case R.id.mycloset_all_btn:
+                    category="all";
+                    userclothesRef.child("add").push().setValue("add");
+                    break;
+                case R.id.mycloset_top_btn:
+                    category="top";
+                    userclothesRef.child("add").push().setValue("add");
+                    break;
+                case R.id.mycloset_bottom_btn:
+                    category="bottom";
+                    userclothesRef.child("add").push().setValue("add");
+                    break;
+                case R.id.mycloset_shoes_btn:
+                    category="shoes";
+                    userclothesRef.child("add").push().setValue("add");
                     break;
             }
         }
