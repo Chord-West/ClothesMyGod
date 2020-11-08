@@ -3,7 +3,7 @@
     package="com.example.clothesmygod">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -12,10 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.mycloset.PostClothesActivity"></activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".SignUpActivitiy" />
-        <activity android:name=".LoginActivity"/>
-        <activity android:name=".SplashActivity"
+        <activity android:name=".LoginActivity" />
+        <activity
+            android:name=".SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

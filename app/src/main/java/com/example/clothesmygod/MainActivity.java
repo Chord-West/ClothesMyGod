@@ -2,22 +2,13 @@ package com.example.clothesmygod;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
-import com.example.clothesmygod.ui.dashboard.DashboardFragment;
+import com.example.clothesmygod.ui.mycloset.MyClosetFragment;
 import com.example.clothesmygod.ui.home.HomeFragment;
-import com.example.clothesmygod.ui.profile.ProfileFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.example.clothesmygod.ui.calendar.CalendarFragment;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -26,9 +17,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //프래그먼트 이동 버튼
         findViewById(R.id.main_home_btn).setOnClickListener(onClickListener);
-        findViewById(R.id.main_dashbord_btn).setOnClickListener(onClickListener);
-        findViewById(R.id.main_profile_btn).setOnClickListener(onClickListener);
-
+        findViewById(R.id.main_mycloset_btn).setOnClickListener(onClickListener);
+        findViewById(R.id.main_calendar_btn).setOnClickListener(onClickListener);
+        setDefaultFragment(); // 첫번쩨 프래그먼트는 Home Fragment
     }
     //클릭 이벤트 Switch 문으로 넘겨진 id 값에 따라 메소드 처리 ( 현서 )
     View.OnClickListener onClickListener = new View.OnClickListener(){
@@ -43,19 +34,25 @@ public class MainActivity extends AppCompatActivity {
                     transaction.addToBackStack(null);
                     transaction.commit();
                     break;
-                case R.id.main_dashbord_btn:
-                    DashboardFragment dashboardFragment = new DashboardFragment();
-                    transaction.replace(R.id.frame,dashboardFragment);
+                case R.id.main_mycloset_btn:
+                    MyClosetFragment myclosetFragment = new MyClosetFragment();
+                    transaction.replace(R.id.frame,myclosetFragment);
                     transaction.addToBackStack(null);
                     transaction.commit();
                     break;
-                case R.id.main_profile_btn:
-                    ProfileFragment profileFragment = new ProfileFragment();
-                    transaction.replace(R.id.frame,profileFragment);
+                case R.id.main_calendar_btn:
+                    CalendarFragment calendarFragment = new CalendarFragment();
+                    transaction.replace(R.id.frame, calendarFragment);
                     transaction.addToBackStack(null);
                     transaction.commit();
                     break;
             }
         }
     };
+    public void setDefaultFragment(){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        HomeFragment homeFragment = new HomeFragment();
+        transaction.add(R.id.frame,homeFragment);
+        transaction.commit();
+    }
 }
