@@ -10,6 +10,8 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.clothesmygod.Model.PostData;
 import com.example.clothesmygod.R;
@@ -23,17 +25,17 @@ public class MyClosetFragment extends Fragment{
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_mycloset,container,false);
+
+        view.findViewById(R.id.mycloset_post_btn).setOnClickListener(onClickListener); // 옷등록 버튼
         ArrayList<PostData> postData = new ArrayList<>();
-        view.findViewById(R.id.mycloset_post_btn).setOnClickListener(onClickListener);
-        postData.add(new PostData("id1","test1","test1"));
-        postData.add(new PostData("id2","test2","test2"));
-        postData.add(new PostData("id3","test3","test3"));
+        // 등록된 옷을 나열하기 위한 recycler view
+        RecyclerView recyclerView = view.findViewById(R.id.mycloset_recyclerView);
+        // 가로로 나오게 하기위한 설정
+        RecyclerView.LayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager); // 레이아웃 메니저를 선언해야 recyclerview 작동
 
-        MyClosetAdapter adapter = new MyClosetAdapter(postData);
-
-        ListView listView = view.findViewById(R.id.mycloset_listview);
-        listView.setAdapter(adapter);
-
+        MyClosetAdapter adapter = new MyClosetAdapter(dataList);
+        recyclerView.setAdapter(adapter);
         return view;
     }
     View.OnClickListener onClickListener = new View.OnClickListener(){
