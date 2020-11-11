@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">ClothesMyGod</string>
+    <string name="title">옷 My Got</string>
     <string name="title_activity_bottomnavigation">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
