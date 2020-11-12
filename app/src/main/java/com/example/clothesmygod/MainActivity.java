@@ -17,9 +17,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //프래그먼트 이동 버튼
         findViewById(R.id.main_home_btn).setOnClickListener(onClickListener);
+
         findViewById(R.id.main_mycloset_btn).setOnClickListener(onClickListener);
         findViewById(R.id.main_calendar_btn).setOnClickListener(onClickListener);
         setDefaultFragment(); // 첫번쩨 프래그먼트는 Home Fragment
+
+
     }
     //클릭 이벤트 Switch 문으로 넘겨진 id 값에 따라 메소드 처리 ( 현서 )
     View.OnClickListener onClickListener = new View.OnClickListener(){
