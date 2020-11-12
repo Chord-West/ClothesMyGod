@@ -1,5 +1,6 @@
 package com.example.clothesmygod.ui.mycody;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -32,8 +33,12 @@ public class SelectAdpater extends BaseAdapter {
     public SelectAdpater(Context context,List<PostData> mDataList) {
         this.context = context;
         this.mDataList = mDataList;
-    }
 
+    }
+//    public SelectAdpater(List<PostData> mDataList) {
+//        this.mDataList = mDataList;
+//
+//    }
     @Override
     public int getCount() {
         return mDataList.size();
@@ -50,7 +55,7 @@ public class SelectAdpater extends BaseAdapter {
     }
 
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, final ViewGroup parent) {
         final ViewHolder holder;
         if(convertView==null){
             holder = new ViewHolder();
@@ -74,6 +79,7 @@ public class SelectAdpater extends BaseAdapter {
             public void onClick(View v) {
                 boolean newState = !mDataList.get(position).isCheck();
                 mDataList.get(position).setCheck(newState);
+
                 System.out.println(newState);
             }
         });
