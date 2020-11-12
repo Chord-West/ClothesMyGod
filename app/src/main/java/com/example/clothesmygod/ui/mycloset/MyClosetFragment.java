@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -50,11 +51,8 @@ public class MyClosetFragment extends Fragment{
 
 
 
-        // 등록된 옷을 나열하기 위한 recycler view
-        final RecyclerView recyclerView = view.findViewById(R.id.mycloset_recyclerView);
-//        // 가로로 나오게 하기위한 설정
-        RecyclerView.LayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(layoutManager); // 레이아웃 메니저를 선언해야 recyclerview 작동
+        // 등록된 옷을 나열하기 위한 grid view
+        final GridView gridView = view.findViewById(R.id.mycloset_gridview);
 
    ;
 
@@ -68,8 +66,8 @@ public class MyClosetFragment extends Fragment{
                     PostData postData = new PostData(currentUser.getUid(),clothes);
                     dataList.add(postData);
                 }
-                MyClosetAdapter adapter = new MyClosetAdapter(dataList);
-                recyclerView.setAdapter(adapter);
+                MyClosetAdapter adapter = new MyClosetAdapter(getActivity(),dataList);
+                gridView.setAdapter(adapter);
 
 
                 view.findViewById(R.id.mycloset_all_btn).setOnClickListener(onClickListener);
@@ -97,19 +95,19 @@ public class MyClosetFragment extends Fragment{
                     break;
                 case R.id.mycloset_all_btn:
                     category="all";
-                    userclothesRef.child("add").push().setValue("add");
+                    userclothesRef.child("change").setValue(category);
                     break;
                 case R.id.mycloset_top_btn:
                     category="top";
-                    userclothesRef.child("add").push().setValue("add");
+                    userclothesRef.child("change").setValue(category);
                     break;
                 case R.id.mycloset_bottom_btn:
                     category="bottom";
-                    userclothesRef.child("add").push().setValue("add");
+                    userclothesRef.child("change").setValue(category);
                     break;
                 case R.id.mycloset_shoes_btn:
                     category="shoes";
-                    userclothesRef.child("add").push().setValue("add");
+                    userclothesRef.child("change").setValue(category);
                     break;
             }
         }

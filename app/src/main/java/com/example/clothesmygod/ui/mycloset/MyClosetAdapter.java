@@ -1,9 +1,12 @@
 package com.example.clothesmygod.ui.mycloset;
 
+import android.content.Context;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,70 +25,62 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.List;
 
-public class MyClosetAdapter extends RecyclerView.Adapter<MyClosetAdapter.ViewHolder> {
-    private final List<PostData> mDataList;
+public class MyClosetAdapter extends BaseAdapter {
+    private List<PostData> mDataList;
+    private Context context;
     FirebaseDatabase database;
     StorageReference mStorageRef = FirebaseStorage.getInstance().getReference();
-
-//    private  MyRecyclerViewClickListener mListener;
-
-    public MyClosetAdapter(List<PostData> mDataList) {
+    public MyClosetAdapter(Context context,List<PostData> mDataList) {
+        this.context = context;
         this.mDataList = mDataList;
     }
 
-//    // 클릭 리스너
-//    public interface MyRecyclerViewClickListener{
-//        void onItemClicked(int position); // 클릭한 아이템 포지션
-//        void onShareButtonClicked(int position);
-//        void onLearnMoreButtonClicked(int position);
-//    }
-
-
-//    public void setOnClickListener(MyRecyclerViewClickListener listener){
-//        mListener = listener;
-//    }
-
-    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.mycloset_card_item,parent,false);
-        return new ViewHolder(view);
+    public int getCount() {
+        return mDataList.size();
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
-        PostData item = mDataList.get(position);
-        holder.closettitle.setText(item.getTitle());
-        StorageReference clothesimgRef = mStorageRef.child("users").child(item.getUid()).child(item.getTitle());
+    public Object getItem(int position) {
+        return mDataList.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        final ViewHolder holder;
+        if(convertView==null){
+            holder = new ViewHolder();
+            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.mycloset_card_item,parent,false);
+            ImageView closetImage = convertView.findViewById(R.id.card_item_img);
+            TextView closetTitle= convertView.findViewById(R.id.card_item_title);
+            holder.closetImage=closetImage;
+            holder.closetTitle=closetTitle;
+            convertView.setTag(holder);
+        }else{
+            holder = (ViewHolder) convertView.getTag();
+        }
+        PostData postdata = mDataList.get(position);
+        holder.closetTitle.setText(postdata.getTitle());
+        StorageReference clothesimgRef = mStorageRef.child("users").child(postdata.getUid()).child(postdata.getTitle());
         clothesimgRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
             @Override
             public void onComplete(@NonNull Task<Uri> task) {
                 if(task.isSuccessful()){
-                    Glide.with(holder.itemView.getContext()).load(task.getResult()).override(150,150).into(holder.closetimage);
+                    Glide.with(context).load(task.getResult()).override(150,150).into(holder.closetImage);
                 }else{
 
                 }
             }
         });
-        System.out.println(clothesimgRef);
-
-
-
+        return convertView;
     }
-
-    @Override
-    public int getItemCount() {
-        return mDataList.size();
+    static class ViewHolder{
+        ImageView closetImage;
+        TextView closetTitle;
     }
-
-    public static class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView closetimage;
-        TextView closettitle;
-        public ViewHolder(View itemView){
-            super(itemView);
-            closetimage = itemView.findViewById(R.id.card_item_img);
-            closettitle = itemView.findViewById(R.id.card_item_title);
-        }
-    }
-
 }
