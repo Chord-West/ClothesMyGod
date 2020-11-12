@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.clothesmygod.ui.mycloset.MyClosetFragment;
-import com.example.clothesmygod.ui.home.HomeFragment;
+import com.example.clothesmygod.ui.mycody.MyCodyFragment;
 import com.example.clothesmygod.ui.calendar.CalendarFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,11 +16,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //프래그먼트 이동 버튼
-        findViewById(R.id.main_home_btn).setOnClickListener(onClickListener);
+        findViewById(R.id.main_mycody_btn).setOnClickListener(onClickListener);
 
         findViewById(R.id.main_mycloset_btn).setOnClickListener(onClickListener);
         findViewById(R.id.main_calendar_btn).setOnClickListener(onClickListener);
-        setDefaultFragment(); // 첫번쩨 프래그먼트는 Home Fragment
+        setDefaultFragment(); // 첫번쩨 프래그먼트는 mycloset
 
 
     }
@@ -31,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             switch (v.getId()){
-                case R.id.main_home_btn:
-                    HomeFragment homeFragment = new HomeFragment();
-                    transaction.replace(R.id.frame,homeFragment);
+                case R.id.main_mycody_btn:
+                    MyCodyFragment myCodyFragment = new MyCodyFragment();
+                    transaction.replace(R.id.frame, myCodyFragment);
                     transaction.addToBackStack(null);
                     transaction.commit();
                     break;
@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
     };
     public void setDefaultFragment(){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        HomeFragment homeFragment = new HomeFragment();
-        transaction.add(R.id.frame,homeFragment);
+        MyClosetFragment myclosetFragment = new MyClosetFragment();
+        transaction.add(R.id.frame,myclosetFragment);
         transaction.commit();
     }
 }
