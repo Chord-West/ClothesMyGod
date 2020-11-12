@@ -1,7 +1,9 @@
 package com.example.clothesmygod.ui.mycody;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -9,25 +11,43 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.example.clothesmygod.Model.CodyItem;
+import com.example.clothesmygod.Model.PostData;
 import com.example.clothesmygod.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PostCodyActivity extends AppCompatActivity {
     private ImageView topimg;
     private ImageView bottomimg;
     private ImageView shoesimg;
+
+    private TextView toptitle;
+    private TextView bottomtitle;
+    private TextView shoestitle;
     private int REQUEST_CODE = 1001;
-    private TextView comeback;
+    private String category ;
     private FirebaseAuth mAuth; // 현재 유저정보 불러오기 위한 메소드
     FirebaseUser currentUser; // 현재 유저에 storage 저장
     FirebaseDatabase database; //User가 가지고있는 옷들 가져오기위한 작엄
@@ -44,6 +64,22 @@ public class PostCodyActivity extends AppCompatActivity {
         shoesimg=findViewById(R.id.codypost_shoes_img);
         shoesimg.setOnClickListener(onClickListener);
 
+        toptitle=(TextView)findViewById(R.id.codypost_top_title);
+        bottomtitle=(TextView)findViewById(R.id.codypost_bottom_title);
+        shoestitle=(TextView)findViewById(R.id.codypost_shoes_title);
+
+        findViewById(R.id.codypost_complete_btn).setOnClickListener(onClickListener);
+        findViewById(R.id.codypost_cancle_btn).setOnClickListener(onClickListener);
+
+        mStorageRef = FirebaseStorage.getInstance().getReference();
+
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+
+        database = FirebaseDatabase.getInstance();
+        userclothesRef = database.getReference().child("users").child(currentUser.getUid());
+
+
     }
     View.OnClickListener onClickListener = new View.OnClickListener(){
         @Override
@@ -51,18 +87,47 @@ public class PostCodyActivity extends AppCompatActivity {
             switch (v.getId()){
                 case R.id.codypost_top_img:
                     Intent intent = new Intent(getApplicationContext(), SelectCategory.class);
-                    intent.putExtra("category","top");
+                    category="top";
+                    intent.putExtra("category",category);
                     startActivityForResult(intent,REQUEST_CODE);
                     break;
                 case R.id.codypost_bottom_img:
+                    category="bottom";
                     Intent intent1 = new Intent(getApplicationContext(), SelectCategory.class);
-                    intent1.putExtra("category","bottom");
+                    intent1.putExtra("category",category);
                     startActivityForResult(intent1,REQUEST_CODE);
                     break;
                 case R.id.codypost_shoes_img:
+                    category="shoes";
                     Intent intent2 = new Intent(getApplicationContext(), SelectCategory.class);
-                    intent2.putExtra("category","shoes");
+                    intent2.putExtra("category",category);
                     startActivityForResult(intent2,REQUEST_CODE);
+                    break;
+                case R.id.codypost_complete_btn:
+                    if(topimg!=null&&bottomimg!=null&&shoesimg!=null){
+                        String key=userclothesRef.child("cody").push().getKey();
+                        CodyItem codyItem = new CodyItem(toptitle.getText().toString(),bottomtitle.getText().toString(),shoestitle.getText().toString());
+                        Map<String, Object> postValues = codyItem.toMap();
+                        Map<String, Object> childUpdates = new HashMap<>();
+                        childUpdates.put(key, postValues);
+                        userclothesRef.child("codylist").updateChildren(childUpdates);
+                        userclothesRef.child("tmp_data").removeValue();
+                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                        MyCodyFragment myCodyFragment = new MyCodyFragment();
+                        transaction.replace(R.id.frame, myCodyFragment);
+                        transaction.addToBackStack(null);
+                        transaction.commit();
+                    }else{
+                        Toast.makeText(getApplicationContext(),"이미지를 모두 등록 해주세요", Toast.LENGTH_SHORT).show();
+                    }
+                    break;
+                case R.id.codypost_cancle_btn:
+                    userclothesRef.child("tmp_data").removeValue();
+                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                    MyCodyFragment myCodyFragment = new MyCodyFragment();
+                    transaction.replace(R.id.frame, myCodyFragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
                     break;
             }
         }
@@ -76,9 +141,73 @@ public class PostCodyActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"수신 실패", Toast.LENGTH_SHORT).show();
         }
         if(requestCode==REQUEST_CODE){ //이미지를 성공적으로 받아왔을 때
-            String comeback = data.getStringExtra("comeback");
-            System.out.println(comeback);
+            String comeback = data.getStringExtra("comeback"); // 가져온 상의, 하의, 신발 중의 아이템 이름( 현서 11/12 )
+
+            userclothesRef.child("tmp_data").child(category).setValue(comeback);
+            ValueEventListener mValueEventListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull final DataSnapshot snapshot) {
+                    for (final DataSnapshot datasnapshot : snapshot.child("tmp_data").getChildren()) {
+                        String clothes= datasnapshot.getValue().toString();  // 옷 이름
+                        String key = datasnapshot.getKey();
+
+                        StorageReference clothesimgRef = mStorageRef.child("users").child(currentUser.getUid()).child(clothes);
+                        if(key.equals("top")){
+                            toptitle.setText(clothes);
+                            clothesimgRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Uri> task) {
+                                    if(task.isSuccessful()){
+                                        Glide.with(getApplicationContext()).load(task.getResult()).override(120,120).into(topimg);
+                                    }else{
+
+                                    }
+                                }
+                            });
+                        }
+                        if(key.equals("bottom")){
+                            bottomtitle.setText(clothes);
+                            clothesimgRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Uri> task) {
+                                    if(task.isSuccessful()){
+                                        Glide.with(getApplicationContext()).load(task.getResult()).override(120,120).into(bottomimg);
+                                    }else{
+
+                                    }
+                                }
+                            });
+                        }
+                        if(key.equals("shoes")){
+                            shoestitle.setText(clothes);
+                            clothesimgRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Uri> task) {
+                                    if(task.isSuccessful()){
+                                        Glide.with(getApplicationContext()).load(task.getResult()).override(120,120).into(shoesimg);
+                                    }else{
+
+                                    }
+                                }
+                            });
+                        }
+
+
+                    }
+
+
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    System.out.println("error");
+                }
+            };
+            userclothesRef.addValueEventListener(mValueEventListener);
         }
+
+
 
     }
 }

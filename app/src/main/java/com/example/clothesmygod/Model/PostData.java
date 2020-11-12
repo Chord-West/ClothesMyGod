@@ -1,11 +1,24 @@
 package com.example.clothesmygod.Model;
 
 import android.graphics.Bitmap;
+import android.net.Uri;
+import android.widget.ImageView;
+
+import java.net.URL;
 
 public class PostData {
     private String uid;
     private String title;
     private boolean check=false;
+    private URL url;
+
+    public URL getUrl() {
+        return url;
+    }
+
+    public void setUrl(URL url) {
+        this.url = url;
+    }
 
     public boolean isCheck() {
         return check;

@@ -4,15 +4,18 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.clothesmygod.Model.PostData;
 import com.example.clothesmygod.R;
 import com.example.clothesmygod.ui.mycloset.MyClosetAdapter;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -23,6 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.net.URL;
 import java.util.ArrayList;
 
 public class SelectCategory extends AppCompatActivity {
@@ -31,6 +35,7 @@ public class SelectCategory extends AppCompatActivity {
     FirebaseDatabase database; //User가 가지고있는 옷들 가져오기위한 작엄
     DatabaseReference userclothesRef;
     StorageReference mStorageRef;
+    TextView title;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +48,8 @@ public class SelectCategory extends AppCompatActivity {
         Intent intent = getIntent();
         final Button selectbtn = findViewById(R.id.select_complete_btn);
         final String category = intent.getExtras().getString("category");
-
+        title=findViewById(R.id.select_category);
+        title.setText(category);
         final GridView gridView = findViewById(R.id.select_gridview);
 
 
@@ -57,7 +63,8 @@ public class SelectCategory extends AppCompatActivity {
                     PostData postData = new PostData(currentUser.getUid(),clothes);
                     dataList.add(postData);
                 }
-                SelectAdpater adapter = new SelectAdpater(SelectCategory.this,dataList);
+                SelectAdpater adapter = new SelectAdpater(getApplicationContext(),dataList);
+//                SelectAdpater adapter = new SelectAdpater(dataList);
                 gridView.setAdapter(adapter);
                 selectbtn.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -74,7 +81,6 @@ public class SelectCategory extends AppCompatActivity {
                             Toast.makeText(SelectCategory.this,"제품을 한개만 선택해주세요", Toast.LENGTH_SHORT).show();
                         }else if(count==1){
                             Intent intent = new Intent();
-                            System.out.println(conveyData.getTitle());
                             intent.putExtra("comeback",conveyData.getTitle());
                             setResult(RESULT_OK,intent);
                             finish();
