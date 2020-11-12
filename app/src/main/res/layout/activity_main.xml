@@ -4,42 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#F5ECFF">
 <!--    프래그먼트를위해 필요-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
     </LinearLayout>
     <FrameLayout
         android:id="@+id/frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </FrameLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        android:gravity="center">
-        <Button
+        android:gravity="center"
+        android:weightSum="3">
+        <ImageButton
             android:id="@+id/main_mycloset_btn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:background="#F5ECFF"
             android:layout_weight="1"
-            android:text="내옷장"/>
-        <Button
+            android:src="@drawable/mycloset" />
+        <ImageButton
             android:id="@+id/main_calendar_btn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:src="@drawable/calendar"
             android:layout_weight="1"
-            android:text="캘린더"/>
-        <Button
+            android:background="#F5ECFF"/>
+        <ImageButton
             android:id="@+id/main_mycody_btn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:background="#F5ECFF"
             android:layout_weight="1"
-            android:text="내 코디"/>
+            android:src="@drawable/help"/>
     </LinearLayout>
 </RelativeLayout>

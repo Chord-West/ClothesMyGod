@@ -16,15 +16,14 @@
         <activity android:name=".ui.mycody.SelectCategory" />
         <activity android:name=".ui.mycody.PostCodyActivity" />
         <activity android:name=".ui.mycloset.PostClothesActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".SignUpActivitiy" />
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".SignUpActivitiy"/>
         <activity android:name=".LoginActivity" />
         <activity
             android:name=".SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
