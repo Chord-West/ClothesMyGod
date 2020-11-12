@@ -54,7 +54,6 @@ public class MyClosetFragment extends Fragment{
         // 등록된 옷을 나열하기 위한 grid view
         final GridView gridView = view.findViewById(R.id.mycloset_gridview);
 
-   ;
 
         ValueEventListener mValueEventListener = new ValueEventListener() {
             @Override

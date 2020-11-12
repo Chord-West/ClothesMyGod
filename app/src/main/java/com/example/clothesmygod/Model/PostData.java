@@ -5,8 +5,15 @@ import android.graphics.Bitmap;
 public class PostData {
     private String uid;
     private String title;
-    private Bitmap bitmap;
+    private boolean check=false;
 
+    public boolean isCheck() {
+        return check;
+    }
+
+    public void setCheck(boolean check) {
+        this.check = check;
+    }
 
     public PostData(String uid, String title) {
         this.uid = uid;
