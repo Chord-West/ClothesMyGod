@@ -9,9 +9,17 @@ public class CodyItem {
     private String top;
     private String bottom;
     private String shoes;
-
+    private String title;
     public CodyItem() {
 
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public CodyItem(String top, String bottom, String shoes) {
