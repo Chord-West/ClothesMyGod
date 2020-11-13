@@ -22,5 +22,17 @@
             android:layout_height="wrap_content"
             android:text="코디 등록"
             android:layout_weight="4"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:orientation="vertical">
+        <GridView
+            android:id="@+id/mycody_gridview"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"/>
     </LinearLayout>
 </FrameLayout>
