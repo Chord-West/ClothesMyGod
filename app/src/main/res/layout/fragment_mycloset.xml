@@ -14,10 +14,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="내옷장"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:textAlignment="center"
             />
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#D3BCE4"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -50,19 +55,24 @@
     <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_marginTop="20dp">
     <GridView
         android:id="@+id/mycloset_gridview"
-        android:numColumns="3"
+        android:columnWidth="100dp"
+        android:paddingStart="9dp"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="18dp"
+        android:numColumns="auto_fit"
         android:layout_width="match_parent"
         android:layout_height="360dp"
         tools:listitem="@layout/mycloset_card_item" />
-
 </FrameLayout>
-
     <LinearLayout
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="10dp"
         android:layout_gravity="right">
         <ImageButton
             android:id="@+id/mycloset_post_btn"
