@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/other_background"
     android:orientation="vertical"
     tools:context=".ui.mycloset.PostClothesActivity">
     <TextView
@@ -18,7 +19,7 @@
         android:id="@+id/post_clothes_img"
         android:layout_width="160dp"
         android:layout_height="160dp"
-        android:background="#eeeeee"
+        android:background="@drawable/shirts"
         android:layout_gravity="center"/>
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,36 +45,34 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:text="카테고리"/>
-
         <RadioGroup
             android:id="@+id/post_radio_group"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal">
-
             <RadioButton
                 android:id="@+id/post_top_radio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="상의" />
-
             <RadioButton
                 android:id="@+id/post_bottom_radio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="하의" />
-
             <RadioButton
                 android:id="@+id/post_shoes_radio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="신발" />
         </RadioGroup>
-
         <Button
             android:id="@+id/post_clothes_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/register_button"
+            android:textColor="#ffffff"
+            android:textSize="17sp"
             android:text="등록"/>
     </LinearLayout>
 

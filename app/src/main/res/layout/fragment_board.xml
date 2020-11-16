@@ -1,0 +1,52 @@
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_height="match_parent"
+android:layout_width="match_parent"
+android:orientation="vertical"
+android:background="#F5ECFF"
+xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="나의 코디"
+        android:textSize="30sp"
+        android:textAlignment="center"/>
+</LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#D3BCE4"
+        android:layout_marginBottom="20dp"
+        />
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <GridView
+        android:id="@+id/mycody_gridview"
+        android:columnWidth="100dp"
+        android:paddingStart="5dp"
+        android:numColumns="auto_fit"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="18dp"
+        android:layout_width="match_parent"
+        android:layout_height="420dp" />
+</FrameLayout>
+<LinearLayout
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:layout_marginTop="15dp"
+    android:layout_gravity="right">
+    <ImageButton
+        android:id="@+id/mycody_post_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#F5ECFF"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/plus" />
+</LinearLayout>
+</LinearLayout>

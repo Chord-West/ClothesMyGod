@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/other_background"
     tools:context=".ui.mycloset.PostClothesActivity">
     <TextView
         android:layout_marginTop="10dp"
@@ -13,6 +14,12 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:text="코디등록"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#D3BCE4"
+        android:layout_marginBottom="20dp"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="160dp"
@@ -26,10 +33,10 @@
             android:text="상의"/>
         <ImageView
             android:id="@+id/codypost_top_img"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:background="#eeeeee"
-            android:layout_gravity="center"/>
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/shirts"/>
         <TextView
             android:id="@+id/codypost_top_title"
             android:layout_marginTop="10dp"
@@ -39,8 +46,6 @@
             android:textAlignment="center"
             />
     </LinearLayout>
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="160dp"
@@ -53,10 +58,10 @@
             android:text="하의"/>
         <ImageView
             android:id="@+id/codypost_bottom_img"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:background="#eeeeee"
-            android:layout_gravity="center"/>
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/pants"/>
         <TextView
             android:id="@+id/codypost_bottom_title"
             android:layout_marginTop="10dp"
@@ -66,7 +71,6 @@
             android:textAlignment="center"
             />
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="160dp"
@@ -79,9 +83,9 @@
             android:text="신발"/>
         <ImageView
             android:id="@+id/codypost_shoes_img"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:background="#eeeeee"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/shoes"
             android:layout_gravity="center"/>
         <TextView
             android:id="@+id/codypost_shoes_title"
@@ -100,13 +104,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="코디명"/>
+            android:textSize="15sp"
+            android:text="코디명 : "/>
         <EditText
             android:id="@+id/codypost_edittitle"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             />
 
     </LinearLayout>
@@ -129,5 +132,4 @@
         android:layout_gravity="center"
         android:text="취소"/>
     </LinearLayout>
-
 </LinearLayout>
