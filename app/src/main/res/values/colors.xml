@@ -5,6 +5,6 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="login_background">#4D8C44A6</color>
     <color name="login_btn">#5E0C7B</color>
-
+    <color name="other_background">#F5ECFF</color>
 
 </resources>

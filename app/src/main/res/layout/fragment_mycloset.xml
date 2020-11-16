@@ -22,36 +22,51 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="#D3BCE4"
+        android:layout_marginBottom="20dp"
         />
-    <LinearLayout
-        android:layout_width="match_parent"
+    <GridLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:columnCount="4"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        >
         <Button
             android:id="@+id/mycloset_all_btn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:background="@drawable/menu_button"
+            android:textSize="15sp"
+            android:textColor="#ffffff"
+            android:layout_marginEnd="10dp"
             android:text="전체"/>
         <Button
             android:id="@+id/mycloset_top_btn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:background="@drawable/menu_button"
+            android:textSize="15sp"
+            android:textColor="#ffffff"
+            android:layout_marginEnd="10dp"
             android:text="상의"/>
         <Button
             android:id="@+id/mycloset_bottom_btn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:background="@drawable/menu_button"
+            android:textSize="15sp"
+            android:textColor="#ffffff"
+            android:layout_marginEnd="10dp"
             android:text="하의"/>
         <Button
             android:id="@+id/mycloset_shoes_btn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:background="@drawable/menu_button"
+            android:textSize="15sp"
+            android:textColor="#ffffff"
             android:text="신발"/>
-    </LinearLayout>
+    </GridLayout>
     <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
