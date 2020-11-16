@@ -1,6 +1,8 @@
 package com.example.clothesmygod.ui.mycody;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -21,6 +24,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -30,10 +34,12 @@ import java.util.List;
 public class MyCodyAdapter extends BaseAdapter {
     private List<CodyItem> mDataList;
     private Context context;
-    FirebaseDatabase database;
+    FirebaseDatabase database= FirebaseDatabase.getInstance(); // 데이터베이스 초기화
+    DatabaseReference codylistRef;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance(); // 현재 유저정보 불러오기 위한 메소드
     FirebaseUser currentUser= mAuth.getCurrentUser();; // 현재 유저에 storage 저장
-    StorageReference mStorageRef = FirebaseStorage.getInstance().getReference();
+    StorageReference mStorageRef = FirebaseStorage.getInstance().getReference(); //firestroae 초기화
+
     public MyCodyAdapter(Context context,List<CodyItem> mDataList) {
         this.context = context;
         this.mDataList = mDataList;
@@ -81,11 +87,36 @@ public class MyCodyAdapter extends BaseAdapter {
         }else{
             holder = (ViewHolder) convertView.getTag();
         }
-        CodyItem codyItem = mDataList.get(position);
+        final CodyItem codyItem = mDataList.get(position);
         holder.topTitle.setText(codyItem.getTop());
         holder.bottomTitle.setText(codyItem.getBottom());
         holder.shoesTitle.setText(codyItem.getShoes());
         holder.codyTitle.setText(codyItem.getTitle());
+        // 코디 삭제하기 위한 버튼
+        holder.codydeletebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("삭제").setMessage("정말 삭제하시겠습니까?").setCancelable(false);
+                builder.setPositiveButton("삭제", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        codylistRef = database.getReference().child("users").child(currentUser.getUid()).child("codylist");
+                        codylistRef.child(codyItem.getTitle()).removeValue();
+                    }
+                });
+                builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        System.out.println("he");
+                        dialog.cancel();
+                    }
+                });
+
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+            }
+        });
 
         StorageReference codytopRef = mStorageRef.child("users").child(currentUser.getUid()).child(codyItem.getTop());
         codytopRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {

@@ -1,10 +1,13 @@
 package com.example.clothesmygod.ui.mycloset;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import androidx.annotation.NonNull;
@@ -67,6 +70,36 @@ public class MyClosetFragment extends Fragment{
                 }
                 MyClosetAdapter adapter = new MyClosetAdapter(getActivity(),dataList);
                 gridView.setAdapter(adapter);
+                gridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                    @Override
+                    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                        final String delete =dataList.get(position).getTitle();
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                        builder.setTitle("삭제").setMessage("정말 삭제하시겠습니까?").setCancelable(false);
+                        builder.setPositiveButton("삭제", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                StorageReference closetRef = mStorageRef.child("users").child(currentUser.getUid()).child(delete);
+                                closetRef.delete();
+                                userclothesRef.child("all").child(delete).removeValue();
+                                userclothesRef.child("top").child(delete).removeValue();
+                                userclothesRef.child("bottom").child(delete).removeValue();
+                                userclothesRef.child("shoes").child(delete).removeValue();
+                            }
+                        });
+                        builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                System.out.println("he");
+                                dialog.cancel();
+                            }
+                        });
+
+                        AlertDialog alertDialog = builder.create();
+                        alertDialog.show();
+                        return true;
+                    }
+                });
 
 
                 view.findViewById(R.id.mycloset_all_btn).setOnClickListener(onClickListener);

@@ -24,6 +24,5 @@
             android:textAlignment="center"
             android:textSize="20dp"
             tools:text="Contents"/>
-
     </LinearLayout>
 </androidx.cardview.widget.CardView>
