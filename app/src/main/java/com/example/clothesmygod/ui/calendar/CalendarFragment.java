@@ -27,7 +27,7 @@ public class CalendarFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_calendar, container, false);
+        View view = inflater.inflate(R.layout.fragment_calendar, container, false);
 
         calendarView = v.findViewById(R.id.calendarView);
         memoTextView = v.findViewById(R.id.memoTextView);
@@ -52,12 +52,7 @@ public class CalendarFragment extends Fragment {
                 contextEditText.setText("");
                 checkDay(year, month, dayOfMonth);
 
-            }
-        });
-
-
-
-        return v;
+        return view;
     }
 
     public void checkDay(int cYear, int cMonth, int cDay) {

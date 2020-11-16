@@ -6,19 +6,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
-import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.clothesmygod.Model.CodyItem;
-import com.example.clothesmygod.Model.PostData;
 import com.example.clothesmygod.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -32,9 +29,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,7 +36,7 @@ public class PostCodyActivity extends AppCompatActivity {
     private ImageView topimg;
     private ImageView bottomimg;
     private ImageView shoesimg;
-
+    private EditText codytitle;
     private TextView toptitle;
     private TextView bottomtitle;
     private TextView shoestitle;
@@ -56,7 +50,7 @@ public class PostCodyActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post_cody);
+        setContentView(R.layout.mycody_postcody);
         topimg = findViewById(R.id.codypost_top_img);
         topimg.setOnClickListener(onClickListener);
         bottomimg = findViewById(R.id.codypost_bottom_img);
@@ -64,9 +58,10 @@ public class PostCodyActivity extends AppCompatActivity {
         shoesimg=findViewById(R.id.codypost_shoes_img);
         shoesimg.setOnClickListener(onClickListener);
 
-        toptitle=(TextView)findViewById(R.id.codypost_top_title);
-        bottomtitle=(TextView)findViewById(R.id.codypost_bottom_title);
-        shoestitle=(TextView)findViewById(R.id.codypost_shoes_title);
+        toptitle=findViewById(R.id.codypost_top_title);
+        bottomtitle=findViewById(R.id.codypost_bottom_title);
+        shoestitle=findViewById(R.id.codypost_shoes_title);
+        codytitle=findViewById(R.id.codypost_edittitle);
 
         findViewById(R.id.codypost_complete_btn).setOnClickListener(onClickListener);
         findViewById(R.id.codypost_cancle_btn).setOnClickListener(onClickListener);
@@ -74,7 +69,7 @@ public class PostCodyActivity extends AppCompatActivity {
         mStorageRef = FirebaseStorage.getInstance().getReference();
 
         mAuth = FirebaseAuth.getInstance();
-        currentUser = mAuth.getCurrentUser();
+        currentUser = mAuth.getCurrentUser(); // 로그인 되어 있는 정보
 
         database = FirebaseDatabase.getInstance();
         userclothesRef = database.getReference().child("users").child(currentUser.getUid());
@@ -104,8 +99,8 @@ public class PostCodyActivity extends AppCompatActivity {
                     startActivityForResult(intent2,REQUEST_CODE);
                     break;
                 case R.id.codypost_complete_btn:
-                    if(topimg!=null&&bottomimg!=null&&shoesimg!=null){
-                        String key=userclothesRef.child("cody").push().getKey();
+                    if(topimg!=null&&bottomimg!=null&&shoesimg!=null&&!codytitle.getText().toString().isEmpty()){
+                        String key=codytitle.getText().toString();
                         CodyItem codyItem = new CodyItem(toptitle.getText().toString(),bottomtitle.getText().toString(),shoestitle.getText().toString());
                         Map<String, Object> postValues = codyItem.toMap();
                         Map<String, Object> childUpdates = new HashMap<>();
