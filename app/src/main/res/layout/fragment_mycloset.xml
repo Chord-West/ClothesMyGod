@@ -14,55 +14,80 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="내옷장"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:textAlignment="center"
             />
     </LinearLayout>
-    <LinearLayout
+    <View
         android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#D3BCE4"
+        android:layout_marginBottom="20dp"
+        />
+    <GridLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:columnCount="4"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        >
         <Button
             android:id="@+id/mycloset_all_btn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:background="@drawable/menu_button"
+            android:textSize="15sp"
+            android:textColor="#ffffff"
+            android:layout_marginEnd="10dp"
             android:text="전체"/>
         <Button
             android:id="@+id/mycloset_top_btn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:background="@drawable/menu_button"
+            android:textSize="15sp"
+            android:textColor="#ffffff"
+            android:layout_marginEnd="10dp"
             android:text="상의"/>
         <Button
             android:id="@+id/mycloset_bottom_btn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:background="@drawable/menu_button"
+            android:textSize="15sp"
+            android:textColor="#ffffff"
+            android:layout_marginEnd="10dp"
             android:text="하의"/>
         <Button
             android:id="@+id/mycloset_shoes_btn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:background="@drawable/menu_button"
+            android:textSize="15sp"
+            android:textColor="#ffffff"
             android:text="신발"/>
-    </LinearLayout>
+    </GridLayout>
     <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_marginTop="20dp">
     <GridView
         android:id="@+id/mycloset_gridview"
-        android:numColumns="3"
+        android:columnWidth="100dp"
+        android:paddingStart="9dp"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="18dp"
+        android:numColumns="auto_fit"
         android:layout_width="match_parent"
         android:layout_height="360dp"
         tools:listitem="@layout/mycloset_card_item" />
-
 </FrameLayout>
-
     <LinearLayout
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="10dp"
         android:layout_gravity="right">
         <ImageButton
             android:id="@+id/mycloset_post_btn"

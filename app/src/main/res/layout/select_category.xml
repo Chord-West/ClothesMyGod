@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/other_background"
     >
     <TextView
         android:id="@+id/select_category"
@@ -19,12 +20,13 @@
        android:id="@+id/select_gridview"
        android:layout_width="match_parent"
        android:layout_height="400dp"/>
-
     <Button
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:id="@+id/select_complete_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:textColor="#ffffff"
+        android:background="@drawable/register_button"
         android:text="등록"/>
 </LinearLayout>

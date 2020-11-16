@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.clothesmygod.ui.board.BoardFragment;
 import com.example.clothesmygod.ui.mycloset.MyClosetFragment;
 import com.example.clothesmygod.ui.mycody.MyCodyFragment;
 import com.example.clothesmygod.ui.calendar.CalendarFragment;
@@ -17,9 +18,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //프래그먼트 이동 버튼
         findViewById(R.id.main_mycody_btn).setOnClickListener(onClickListener);
-
         findViewById(R.id.main_mycloset_btn).setOnClickListener(onClickListener);
         findViewById(R.id.main_calendar_btn).setOnClickListener(onClickListener);
+        findViewById(R.id.main_board_btn).setOnClickListener(onClickListener);
         setDefaultFragment(); // 첫번쩨 프래그먼트는 mycloset
 
 
@@ -46,6 +47,12 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.main_calendar_btn:
                     CalendarFragment calendarFragment = new CalendarFragment();
                     transaction.replace(R.id.frame, calendarFragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+                    break;
+                case R.id.main_board_btn:
+                    BoardFragment boardFragment = new BoardFragment();
+                    transaction.replace(R.id.frame, boardFragment);
                     transaction.addToBackStack(null);
                     transaction.commit();
                     break;
