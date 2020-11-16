@@ -1,6 +1,5 @@
 package com.example.clothesmygod.ui.mycody;
 
-import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -16,7 +15,6 @@ import androidx.annotation.NonNull;
 import com.bumptech.glide.Glide;
 import com.example.clothesmygod.Model.PostData;
 import com.example.clothesmygod.R;
-import com.example.clothesmygod.ui.mycloset.MyClosetAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.FirebaseDatabase;
@@ -59,7 +57,7 @@ public class SelectAdpater extends BaseAdapter {
         final ViewHolder holder;
         if(convertView==null){
             holder = new ViewHolder();
-            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.select_item,parent,false);
+            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.mycody_select_item,parent,false);
             ImageView closetImage = convertView.findViewById(R.id.select_item_img);
             TextView closetTitle= convertView.findViewById(R.id.select_item_title);
             CheckBox checkBox = convertView.findViewById(R.id.checkBox);

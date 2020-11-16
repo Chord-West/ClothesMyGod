@@ -53,7 +53,7 @@ public class PostClothesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post_clothes);
+        setContentView(R.layout.mycloset_post_clothes);
         radioGroup = (RadioGroup) findViewById(R.id.post_radio_group); // 상의, 하의 , 신발 선택하기위한 라디오그룹
         radioGroup.setOnCheckedChangeListener(radioGroupButtonChangeListener);
 
@@ -101,8 +101,8 @@ public class PostClothesActivity extends AppCompatActivity {
                     //         user//user.Uid(유저키) // 카테고리(상의,하의,신발) // 입력한 이름으로 저장
                     StorageReference postRef = mStorageRef.child("users").child(currentUser.getUid()).child(postname);
 
-                    mDatabase.child("users").child(currentUser.getUid()).child(closet_catrgory).push().setValue(postname);
-                    mDatabase.child("users").child(currentUser.getUid()).child("all").push().setValue(postname);
+                    mDatabase.child("users").child(currentUser.getUid()).child(closet_catrgory).child(postname).setValue(postname);
+                    mDatabase.child("users").child(currentUser.getUid()).child("all").child(postname).setValue(postname);
 
                     //(파이어베이스 메소드 )
                     postRef.putFile(image) // 이미지 파일 삽입

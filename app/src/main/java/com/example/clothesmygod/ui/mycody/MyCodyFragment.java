@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 
@@ -33,6 +34,8 @@ import java.util.ArrayList;
 public class MyCodyFragment extends Fragment {
     private View view;
     private FirebaseAuth mAuth; // 현재 유저정보 불러오기 위한 메소드
+
+
     FirebaseUser currentUser; // 현재 유저에 storage 저장
     FirebaseDatabase database; //User가 가지고있는 옷들 가져오기위한 작엄
     DatabaseReference codylistRef;
@@ -45,6 +48,7 @@ public class MyCodyFragment extends Fragment {
         final ArrayList<CodyItem> codylist = new ArrayList<>();
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser(); // 로그인 되어 있는 정보
+
 
         database = FirebaseDatabase.getInstance();
         codylistRef = database.getReference().child("users").child(currentUser.getUid()).child("codylist"); //코디리스트
@@ -63,6 +67,7 @@ public class MyCodyFragment extends Fragment {
                 }
                 MyCodyAdapter adapter = new MyCodyAdapter(getActivity(),codylist);
                 gridView.setAdapter(adapter);
+
 
 
 
