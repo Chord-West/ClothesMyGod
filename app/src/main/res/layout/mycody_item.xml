@@ -77,6 +77,8 @@
         android:id="@+id/codylist_delete_btn"
         android:layout_width="60dp"
         android:layout_height="35dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/register_button"
         android:text="삭제"
         android:textSize="12sp"
         />
