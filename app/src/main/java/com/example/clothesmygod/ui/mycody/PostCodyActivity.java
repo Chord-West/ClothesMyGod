@@ -186,12 +186,7 @@ public class PostCodyActivity extends AppCompatActivity {
                                 }
                             });
                         }
-
-
                     }
-
-
-
                 }
 
                 @Override
@@ -201,8 +196,5 @@ public class PostCodyActivity extends AppCompatActivity {
             };
             userclothesRef.addValueEventListener(mValueEventListener);
         }
-
-
-
     }
 }
