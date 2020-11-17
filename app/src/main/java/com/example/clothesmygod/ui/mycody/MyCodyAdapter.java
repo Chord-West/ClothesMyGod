@@ -34,11 +34,13 @@ import java.util.List;
 public class MyCodyAdapter extends BaseAdapter {
     private List<CodyItem> mDataList;
     private Context context;
-    FirebaseDatabase database= FirebaseDatabase.getInstance(); // 데이터베이스 초기화
-    DatabaseReference codylistRef;
-    private FirebaseAuth mAuth = FirebaseAuth.getInstance(); // 현재 유저정보 불러오기 위한 메소드
-    FirebaseUser currentUser= mAuth.getCurrentUser();; // 현재 유저에 storage 저장
-    StorageReference mStorageRef = FirebaseStorage.getInstance().getReference(); //firestroae 초기화
+
+    //파이어 베이스 메소드 인스턴스화  ( 현서 11/13일 )
+    FirebaseDatabase database= FirebaseDatabase.getInstance(); // 데이터베이스 초기화  ( 현서 11/13일 )
+    DatabaseReference codylistRef; // 코디리스트  ( 현서 11/13일 )
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance(); // 현재 유저정보 불러오기 위한 메소드  ( 현서 11/13일 )
+    FirebaseUser currentUser= mAuth.getCurrentUser();; // 현재 유저에 storage 저장  ( 현서 11/13일 )
+    StorageReference mStorageRef = FirebaseStorage.getInstance().getReference(); //firestroae 초기화 ( 현서 11/13일 )
 
     public MyCodyAdapter(Context context,List<CodyItem> mDataList) {
         this.context = context;
@@ -87,12 +89,14 @@ public class MyCodyAdapter extends BaseAdapter {
         }else{
             holder = (ViewHolder) convertView.getTag();
         }
+        // 선택된 코디리스트 아이템  ( 현서 11/13일 )
         final CodyItem codyItem = mDataList.get(position);
         holder.topTitle.setText(codyItem.getTop());
         holder.bottomTitle.setText(codyItem.getBottom());
         holder.shoesTitle.setText(codyItem.getShoes());
         holder.codyTitle.setText(codyItem.getTitle());
-        // 코디 삭제하기 위한 버튼
+
+        // 코디 삭제하기 위한 버튼 클릭시 ( 현서 11/13일 )
         holder.codydeletebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,6 +122,9 @@ public class MyCodyAdapter extends BaseAdapter {
             }
         });
 
+
+        // 카테고리에 따라서  Glide 메소드를 통해 Imageview에 고정 ( 현서 11/13일 )
+        // 코디 아이템중 상의
         StorageReference codytopRef = mStorageRef.child("users").child(currentUser.getUid()).child(codyItem.getTop()+".jpg");
         codytopRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
             @Override
@@ -129,6 +136,7 @@ public class MyCodyAdapter extends BaseAdapter {
                 }
             }
         });
+        // 코디 아이템중 하의  ( 현서 11/13일 )
         StorageReference codybottomRef = mStorageRef.child("users").child(currentUser.getUid()).child(codyItem.getBottom()+".jpg");
         codybottomRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
             @Override
@@ -140,6 +148,7 @@ public class MyCodyAdapter extends BaseAdapter {
                 }
             }
         });
+        // 코디 아이템중 신발  ( 현서 11/13일 )
         StorageReference codyshoesRef = mStorageRef.child("users").child(currentUser.getUid()).child(codyItem.getShoes()+".jpg");
         codyshoesRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
             @Override
@@ -154,6 +163,7 @@ public class MyCodyAdapter extends BaseAdapter {
         return convertView;
     }
     public class ViewHolder{
+        // 레이아웃에 연결시키기위한 ViewHolder ( 현서 11/13일 )
         ImageView topImage;
         ImageView bottomImage;
         ImageView shoesImage;
