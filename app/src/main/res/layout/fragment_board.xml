@@ -12,7 +12,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="나의 코디"
+        android:text="질문 게시판"
         android:textSize="30sp"
         android:textAlignment="center"/>
 </LinearLayout>
@@ -26,11 +26,9 @@ xmlns:android="http://schemas.android.com/apk/res/android">
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-    <GridView
-        android:id="@+id/mycody_gridview"
+    <ListView
+        android:id="@+id/board_listView"
         android:columnWidth="100dp"
-        android:paddingStart="5dp"
-        android:numColumns="auto_fit"
         android:horizontalSpacing="10dp"
         android:verticalSpacing="18dp"
         android:layout_width="match_parent"
@@ -42,11 +40,11 @@ xmlns:android="http://schemas.android.com/apk/res/android">
     android:layout_marginTop="15dp"
     android:layout_gravity="right">
     <ImageButton
-        android:id="@+id/mycody_post_btn"
+        android:id="@+id/board_post_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#F5ECFF"
-        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
         android:src="@drawable/plus" />
 </LinearLayout>
 </LinearLayout>

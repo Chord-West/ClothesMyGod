@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/other_background"
-    tools:context=".ui.mycloset.PostClothesActivity">
+    android:background="@color/other_background">
     <TextView
         android:layout_marginTop="10dp"
         android:textAlignment="center"
