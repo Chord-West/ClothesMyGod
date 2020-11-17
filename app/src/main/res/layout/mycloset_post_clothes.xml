@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/other_background"
+    android:background="@color/color_background"
     android:orientation="vertical"
     tools:context=".ui.mycloset.PostClothesActivity">
     <TextView
@@ -30,6 +30,7 @@
             android:layout_marginTop="10dp"
             android:textSize="20sp"
             android:layout_width="match_parent"
+            android:textColor="@color/color_text"
             android:layout_height="40dp"
             android:text="옷등록"/>
         <EditText
@@ -44,6 +45,7 @@
             android:textSize="20sp"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:textColor="@color/color_text"
             android:text="카테고리"/>
         <RadioGroup
             android:id="@+id/post_radio_group"
@@ -54,16 +56,19 @@
                 android:id="@+id/post_top_radio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/color_text"
                 android:text="상의" />
             <RadioButton
                 android:id="@+id/post_bottom_radio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/color_text"
                 android:text="하의" />
             <RadioButton
                 android:id="@+id/post_shoes_radio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/color_text"
                 android:text="신발" />
         </RadioGroup>
         <Button

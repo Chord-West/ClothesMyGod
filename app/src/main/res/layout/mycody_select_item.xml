@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/login_background">
+        android:background="@color/color_background">
         <ImageView
             android:id="@+id/select_item_img"
             android:layout_width="150dp"
@@ -24,6 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
+            android:textColor="@color/color_text"
             android:textAlignment="center"
             tools:text="Contents"/>
         <CheckBox

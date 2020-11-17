@@ -3,8 +3,9 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name="login_background">#4D8C44A6</color>
-    <color name="login_btn">#5E0C7B</color>
-    <color name="other_background">#F5ECFF</color>
-
+    <color name="color_background">#CCFFFEFA</color>
+    <color name="color_btn">#B3392F31</color>
+    <color name="color_line">#372811</color>
+    <color name="color_inner_wrap">#33B28E57</color>
+    <color name="color_text">#392F31</color>
 </resources>
