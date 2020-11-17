@@ -107,7 +107,7 @@
    ┃ ┃ ┣ 📜mycloset_post_clothes.xml
    ┃ ┃
    ┃ ┃ ┣ 📜mycody_item.xml
- ┃ ┃ ┣ 📜mycody_postcody.xml
+   ┃ ┣ 📜mycody_postcody.xml
    ┃ ┃ ┣ 📜mycody_select_category.xml
    ┃ ┃ ┗ 📜mycody_select_item.xml
    ┗ 📜AndroidManifest.xml
