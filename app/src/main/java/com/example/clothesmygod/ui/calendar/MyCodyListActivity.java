@@ -39,10 +39,10 @@ public class MyCodyListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mycodylist);
 
-//        listView= (ListView)findViewById(R.id.listview);
-//        mStorageRef = FirebaseStorage.getInstance().getReference();
-//        mAuth = FirebaseAuth.getInstance();
-//        currentUser = mAuth.getCurrentUser();
+        listView= (ListView)findViewById(R.id.listview);
+        mStorageRef = FirebaseStorage.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
 //
 //        adapter = new ArrayAdapter<String>(this, R.layout.activity_mycodylist, fileList);
 //        listView.setAdapter(adapter);
