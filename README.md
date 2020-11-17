@@ -64,25 +64,29 @@
    ┃ ┃ ┃ ┗ 📂clothesmygod
    ┃ ┃ ┃ ┃ ┣ 📂Model
    ┃ ┃ ┃ ┃ ┃ ┣ 📜CodyItem.java
-   ┃ ┃ ┃ ┃ ┃ ┣ 📜PostData.java
-   ┃ ┃ ┃ ┃ ┃ ┗ 📜User.java
+   ┃ ┃ ┃ ┃ ┃ ┗ 📜PostData.java
+   ┃ ┃ ┃ ┃ ┃ 
    ┃ ┃ ┃ ┃ ┣ 📂ui
    ┃ ┃ ┃ ┃ ┃ ┣ 📂board
    ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜BoardFragment.java
+   ┃ ┃ ┃ ┃ ┃ ┃ 
    ┃ ┃ ┃ ┃ ┃ ┣ 📂calendar
    ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CalendarFragment.java
    ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MyCodyListActivity.java
    ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MyCodyListAdpater.java
+   ┃ ┃ ┃ ┃ ┃ ┃
    ┃ ┃ ┃ ┃ ┃ ┣ 📂mycloset
    ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MyClosetAdapter.java
    ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MyClosetFragment.java
    ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜PostClothesActivity.java
+   ┃ ┃ ┃ ┃ ┃ ┃
    ┃ ┃ ┃ ┃ ┃ ┗ 📂mycody
    ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MyCodyAdapter.java
    ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MyCodyFragment.java
    ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PostCodyActivity.java
    ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜SelectAdpater.java
    ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SelectCategory.java
+   ┃ ┃ ┃ ┃ ┃ 
    ┃ ┃ ┃ ┃ ┣ 📜LoginActivity.java
    ┃ ┃ ┃ ┃ ┣ 📜MainActivity.java
    ┃ ┃ ┃ ┃ ┣ 📜SignUpActivitiy.java
@@ -93,21 +97,23 @@
    ┃ ┃ ┣ 📜activity_main.xml
    ┃ ┃ ┣ 📜activity_mycodylist.xml
    ┃ ┃ ┣ 📜activity_signup.xml
+   ┃ ┃
    ┃ ┃ ┣ 📜fragment_board.xml
    ┃ ┃ ┣ 📜fragment_calendar.xml
    ┃ ┃ ┣ 📜fragment_mycloset.xml
    ┃ ┃ ┣ 📜fragment_mycody.xml
+   ┃ ┃
    ┃ ┃ ┣ 📜mycloset_card_item.xml
    ┃ ┃ ┣ 📜mycloset_post_clothes.xml
+   ┃ ┃
    ┃ ┃ ┣ 📜mycody_item.xml
-   ┃ ┃ ┣ 📜mycody_postcody.xml
+ ┃ ┃ ┣ 📜mycody_postcody.xml
    ┃ ┃ ┣ 📜mycody_select_category.xml
    ┃ ┃ ┗ 📜mycody_select_item.xml
-   ┃ ┣ 📂mipmap-anydpi-v26
    ┗ 📜AndroidManifest.xml
   
   ```
-
+  
   
 
 ### 주요 기능
