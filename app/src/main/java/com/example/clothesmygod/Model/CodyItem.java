@@ -66,7 +66,6 @@ public class CodyItem {
         result.put("top", top);
         result.put("bottom", bottom);
         result.put("shoes", shoes);
-
         return result;
     }
 }

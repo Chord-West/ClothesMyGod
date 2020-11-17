@@ -16,9 +16,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.clothesmygod.MainActivity;
 import com.example.clothesmygod.Model.Board;
 import com.example.clothesmygod.Model.CodyItem;
 import com.example.clothesmygod.R;
+import com.example.clothesmygod.ui.mycloset.PostClothesActivity;
 import com.example.clothesmygod.ui.mycody.MyCodyFragment;
 import com.example.clothesmygod.ui.mycody.SelectCategory;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -56,15 +58,17 @@ public class PostBoardActivity extends AppCompatActivity {
         postBoardBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String author = currentUser.toString();
+                String author = currentUser.getEmail();
                 String post_name = ((EditText) findViewById(R.id.post_board_name)).getText().toString();
                 String post_content = ((EditText) findViewById(R.id.post_board_content)).getText().toString();
-                board = new Board(author, post_name, post_content);
-
-                if (post_content != null && post_name != null) {
+                Board board =new Board(author,post_name,post_content);
+                if(!post_content.equals("") && !post_name.equals("")) {
                     mDatabase.child("board").push().setValue(board);
-                } else {
-                    Toast.makeText(PostBoardActivity.this, "게시글의 이름과 내용을 모두 입력해 주세요 ", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(PostBoardActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(PostBoardActivity.this,"제목과 내용을 모두 입력해주세요",Toast.LENGTH_SHORT).show();
                 }
             }
         });
