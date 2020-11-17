@@ -118,7 +118,7 @@ public class MyCodyAdapter extends BaseAdapter {
             }
         });
 
-        StorageReference codytopRef = mStorageRef.child("users").child(currentUser.getUid()).child(codyItem.getTop());
+        StorageReference codytopRef = mStorageRef.child("users").child(currentUser.getUid()).child(codyItem.getTop()+".jpg");
         codytopRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
             @Override
             public void onComplete(@NonNull Task<Uri> task) {
@@ -129,7 +129,7 @@ public class MyCodyAdapter extends BaseAdapter {
                 }
             }
         });
-        StorageReference codybottomRef = mStorageRef.child("users").child(currentUser.getUid()).child(codyItem.getBottom());
+        StorageReference codybottomRef = mStorageRef.child("users").child(currentUser.getUid()).child(codyItem.getBottom()+".jpg");
         codybottomRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
             @Override
             public void onComplete(@NonNull Task<Uri> task) {
@@ -140,7 +140,7 @@ public class MyCodyAdapter extends BaseAdapter {
                 }
             }
         });
-        StorageReference codyshoesRef = mStorageRef.child("users").child(currentUser.getUid()).child(codyItem.getShoes());
+        StorageReference codyshoesRef = mStorageRef.child("users").child(currentUser.getUid()).child(codyItem.getShoes()+".jpg");
         codyshoesRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
             @Override
             public void onComplete(@NonNull Task<Uri> task) {

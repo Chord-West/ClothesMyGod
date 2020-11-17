@@ -99,7 +99,7 @@ public class PostClothesActivity extends AppCompatActivity {
 
                 if(closet_catrgory!=null&&postname!=null){
                     //         user//user.Uid(유저키) // 카테고리(상의,하의,신발) // 입력한 이름으로 저장
-                    StorageReference postRef = mStorageRef.child("users").child(currentUser.getUid()).child(postname);
+                    StorageReference postRef = mStorageRef.child("users").child(currentUser.getUid()).child(postname+".jpg");
 
                     mDatabase.child("users").child(currentUser.getUid()).child(closet_catrgory).child(postname).setValue(postname);
                     mDatabase.child("users").child(currentUser.getUid()).child("all").child(postname).setValue(postname);

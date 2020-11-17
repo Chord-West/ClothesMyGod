@@ -24,19 +24,19 @@ public class CalendarFragment extends Fragment {
     public Button cha_Btn, del_Btn, get_Btn;
     public TextView memoTextView, textView2, title;
     public EditText contextEditText;
-
+    private View view;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_calendar, container, false);
+        view = inflater.inflate(R.layout.fragment_calendar, container, false);
 
-        calendarView = v.findViewById(R.id.calendarView);
-        memoTextView = v.findViewById(R.id.memoTextView);
-        del_Btn = v.findViewById(R.id.del_Btn);
-        cha_Btn = v.findViewById(R.id.cha_Btn);
-        get_Btn = v.findViewById(R.id.get_Btn);
-        textView2 = v.findViewById(R.id.textView2);
-        title = v.findViewById(R.id.title);
-        contextEditText = v.findViewById(R.id.contextEditText);
+        calendarView = view.findViewById(R.id.calendarView);
+        memoTextView = view.findViewById(R.id.memoTextView);
+        del_Btn = view.findViewById(R.id.del_Btn);
+        cha_Btn = view.findViewById(R.id.cha_Btn);
+        get_Btn = view.findViewById(R.id.get_Btn);
+        textView2 = view.findViewById(R.id.textView2);
+        title = view.findViewById(R.id.title);
+        contextEditText = view.findViewById(R.id.contextEditText);
 
 
 
@@ -51,7 +51,8 @@ public class CalendarFragment extends Fragment {
                 memoTextView.setText(String.format("%d / %d / %d", year, month + 1, dayOfMonth));
                 contextEditText.setText("");
                 checkDay(year, month, dayOfMonth);
-
+            }
+        });
         return view;
     }
 

@@ -79,7 +79,7 @@ public class MyClosetFragment extends Fragment{
                         builder.setPositiveButton("삭제", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                StorageReference closetRef = mStorageRef.child("users").child(currentUser.getUid()).child(delete);
+                                StorageReference closetRef = mStorageRef.child("users").child(currentUser.getUid()).child(delete+".jpg");
                                 closetRef.delete();
                                 userclothesRef.child("all").child(delete).removeValue();
                                 userclothesRef.child("top").child(delete).removeValue();
