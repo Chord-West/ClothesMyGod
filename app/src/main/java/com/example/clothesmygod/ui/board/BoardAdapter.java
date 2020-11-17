@@ -26,10 +26,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BoardAdapter extends BaseAdapter {
-    Context context;
-    List<Board> data = new ArrayList<Board>();
-    BoardAdapter(Context context){
-        this.context=context;
+    List<Board> data;
+    BoardAdapter(List<Board> data){
+        this.data=data;
     }
     @Override
     public int getCount() {

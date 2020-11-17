@@ -46,38 +46,29 @@ public class BoardFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_board,container,false);
         view.findViewById(R.id.board_post_btn).setOnClickListener(onClickListener);
         final ListView listView = (ListView)view.findViewById(R.id.board_listView);
-        final List<Board> board = new ArrayList<Board>();
-        BoardAdapter adapter = new BoardAdapter(getActivity());
-        listView.setAdapter(adapter);
-        board.add(new Board("","",""));
+        final ArrayList<Board> boardData = new ArrayList<>();
+
         DatabaseReference db = FirebaseDatabase.getInstance().getReference();
-        db.child("board").addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                Board board1 = snapshot.getValue(Board.class);
-                board.add(board1);
-            }
+        DatabaseReference boardDBRef = db.child("board");
 
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+       ValueEventListener mValueEventListener = new ValueEventListener() {
+           @Override
+           public void onDataChange(@NonNull DataSnapshot snapshot) {
+               boardData.clear();
+               for (DataSnapshot datasnapshot : snapshot.getChildren()) {
+                   Board board = datasnapshot.getValue(Board.class);
+                   boardData.add(board);
+               }
+               BoardAdapter adapter = new BoardAdapter(boardData);
+               listView.setAdapter(adapter);
+           }
 
-            }
+           @Override
+           public void onCancelled(@NonNull DatabaseError error) {
 
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+           }
+       };
+       boardDBRef.addValueEventListener(mValueEventListener);
         return view;
     }
 
