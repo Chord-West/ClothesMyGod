@@ -146,7 +146,7 @@ public class PostCodyActivity extends AppCompatActivity {
                         String clothes= datasnapshot.getValue().toString();  // 옷 이름
                         String key = datasnapshot.getKey();
 
-                        StorageReference clothesimgRef = mStorageRef.child("users").child(currentUser.getUid()).child(clothes);
+                        StorageReference clothesimgRef = mStorageRef.child("users").child(currentUser.getUid()).child(clothes+".jpg");
                         if(key.equals("top")){
                             toptitle.setText(clothes);
                             clothesimgRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
