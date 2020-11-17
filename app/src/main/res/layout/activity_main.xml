@@ -7,6 +7,14 @@
     tools:context=".MainActivity"
     android:background="#F5ECFF">
 <!--    프래그먼트를위해 필요-->
+    <Button
+        android:id="@+id/logout_btn"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:text="logout"
+        android:textSize="12sp"
+        android:background="@drawable/login_button"
+        android:layout_margin="5dp"/>
     <FrameLayout
         android:id="@+id/frame"
         android:layout_width="match_parent"

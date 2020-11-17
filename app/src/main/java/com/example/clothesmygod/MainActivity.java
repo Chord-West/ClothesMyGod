@@ -3,15 +3,20 @@ package com.example.clothesmygod;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import com.example.clothesmygod.ui.board.BoardFragment;
 import com.example.clothesmygod.ui.mycloset.MyClosetFragment;
 import com.example.clothesmygod.ui.mycody.MyCodyFragment;
 import com.example.clothesmygod.ui.calendar.CalendarFragment;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
+    private FirebaseAuth mAuth= FirebaseAuth.getInstance();;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +27,16 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.main_calendar_btn).setOnClickListener(onClickListener);
         findViewById(R.id.main_board_btn).setOnClickListener(onClickListener);
         setDefaultFragment(); // 첫번쩨 프래그먼트는 mycloset
+        Button logout_btn = (Button)findViewById(R.id.logout_btn);
 
+        logout_btn.setOnClickListener(new View.OnClickListener() { //로그아웃을 위한 함수 (현구)
+            @Override
+            public void onClick(View view) {
+                mAuth.signOut();
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                finish();
+            }
+        });
 
     }
     //클릭 이벤트 Switch 문으로 넘겨진 id 값에 따라 메소드 처리 ( 현서 )

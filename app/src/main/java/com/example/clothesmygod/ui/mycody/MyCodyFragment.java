@@ -1,5 +1,6 @@
 package com.example.clothesmygod.ui.mycody;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import com.bumptech.glide.Glide;
 import com.example.clothesmygod.Model.CodyItem;
 import com.example.clothesmygod.R;
+import com.example.clothesmygod.ui.board.PostBoardActivity;
 import com.example.clothesmygod.ui.mycloset.PostClothesActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -67,10 +69,6 @@ public class MyCodyFragment extends Fragment {
                 }
                 MyCodyAdapter adapter = new MyCodyAdapter(getActivity(),codylist);
                 gridView.setAdapter(adapter);
-
-
-
-
             }
 
             @Override
@@ -79,7 +77,6 @@ public class MyCodyFragment extends Fragment {
             }
         };
         codylistRef.addValueEventListener(mValueEventListener);
-
         return view;
     }
     View.OnClickListener onClickListener = new View.OnClickListener(){
