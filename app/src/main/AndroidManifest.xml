@@ -20,6 +20,9 @@
         <activity android:name=".MainActivity"/>
         <activity android:name=".SignUpActivitiy"/>
         <activity android:name=".LoginActivity" />
+
+        <activity android:name=".ui.calendar.CalendarActivity"/>
+
         <activity
             android:name=".SplashActivity"
             android:theme="@style/SplashTheme">
