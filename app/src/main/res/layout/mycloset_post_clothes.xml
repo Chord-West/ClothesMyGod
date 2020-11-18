@@ -19,7 +19,7 @@
         android:id="@+id/post_clothes_img"
         android:layout_width="160dp"
         android:layout_height="160dp"
-        android:background="@drawable/shirts"
+        android:background="@drawable/clothes_wrap"
         android:layout_gravity="center"/>
     <LinearLayout
         android:layout_width="match_parent"

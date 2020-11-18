@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -5,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    >
-
+    android:background="@color/color_background">
     <TextView
         android:layout_marginTop="10dp"
         android:textAlignment="center"
@@ -38,7 +38,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
-            android:src="@drawable/shirts"/>
+            android:src="@drawable/clothes_wrap"/>
         <TextView
             android:id="@+id/codypost_top_title"
             android:layout_marginTop="10dp"
@@ -65,7 +65,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
-            android:src="@drawable/pants"/>
+            android:src="@drawable/pant_wrap"/>
         <TextView
             android:id="@+id/codypost_bottom_title"
             android:layout_marginTop="10dp"
@@ -91,7 +91,7 @@
             android:id="@+id/codypost_shoes_img"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/shoes"
+            android:src="@drawable/shoes_wrap"
             android:layout_gravity="center"/>
         <TextView
             android:id="@+id/codypost_shoes_title"
@@ -144,4 +144,5 @@
         android:background="@drawable/login_button"
         android:text="취소"/>
     </LinearLayout>
+
 </LinearLayout>
