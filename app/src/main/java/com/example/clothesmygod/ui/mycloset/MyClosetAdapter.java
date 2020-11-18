@@ -29,7 +29,9 @@ public class MyClosetAdapter extends BaseAdapter {
     private List<PostData> mDataList;
     private Context context;
     FirebaseDatabase database;
+
     StorageReference mStorageRef = FirebaseStorage.getInstance().getReference();
+    //Mycloset의 context와 data를 받기 위한 생성자 // (현서 11/8 )
     public MyClosetAdapter(Context context,List<PostData> mDataList) {
         this.context = context;
         this.mDataList = mDataList;
@@ -64,13 +66,17 @@ public class MyClosetAdapter extends BaseAdapter {
         }else{
             holder = (ViewHolder) convertView.getTag();
         }
+
+        //선택된 아이템에 PostData를 가져옴 // (현서 11/12 )
         PostData postdata = mDataList.get(position);
         holder.closetTitle.setText(postdata.getTitle());
-        StorageReference clothesimgRef = mStorageRef.child("users").child(postdata.getUid()).child(postdata.getTitle());
+        //선택된 아이템에 User의 UID의 옷 이름에 따라서  Storage의 똑같은 파일을 다운받아서 ImageView에 고정 (현서 11/12 )
+        StorageReference clothesimgRef = mStorageRef.child("users").child(postdata.getUid()).child(postdata.getTitle()+".jpg");
         clothesimgRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
             @Override
             public void onComplete(@NonNull Task<Uri> task) {
                 if(task.isSuccessful()){
+                    //Glide 메소드를 통해 다운받은 URI를  ImageView에 고정 (현서 11/12 )
                     Glide.with(context).load(task.getResult()).override(150,150).into(holder.closetImage);
                 }else{
 
@@ -79,6 +85,7 @@ public class MyClosetAdapter extends BaseAdapter {
         });
         return convertView;
     }
+    //Mycloset의 data를 item에 고정시키기 위한 view holder // (현서 11/12 )
     public class ViewHolder{
         ImageView closetImage;
         TextView closetTitle;

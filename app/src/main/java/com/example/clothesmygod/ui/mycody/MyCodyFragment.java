@@ -1,5 +1,6 @@
 package com.example.clothesmygod.ui.mycody;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import com.bumptech.glide.Glide;
 import com.example.clothesmygod.Model.CodyItem;
 import com.example.clothesmygod.R;
+import com.example.clothesmygod.ui.board.PostBoardActivity;
 import com.example.clothesmygod.ui.mycloset.PostClothesActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -33,44 +35,45 @@ import java.util.ArrayList;
 
 public class MyCodyFragment extends Fragment {
     private View view;
-    private FirebaseAuth mAuth; // 현재 유저정보 불러오기 위한 메소드
 
-
-    FirebaseUser currentUser; // 현재 유저에 storage 저장
-    FirebaseDatabase database; //User가 가지고있는 옷들 가져오기위한 작엄
+    //파이어베이스 메소드 선언 (현서 11/13일 )
+    private FirebaseAuth mAuth;
+    FirebaseUser currentUser;
+    FirebaseDatabase database;
     DatabaseReference codylistRef;
     StorageReference mStorageRef;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_mycody,container,false);
         view.findViewById(R.id.mycody_post_btn).setOnClickListener(onClickListener);
+
+        //파이어베이스 메소드  인스턴스화  (현서 11/13일 )
         mStorageRef = FirebaseStorage.getInstance().getReference();
-        final ArrayList<CodyItem> codylist = new ArrayList<>();
         mAuth = FirebaseAuth.getInstance();
-        currentUser = mAuth.getCurrentUser(); // 로그인 되어 있는 정보
-
-
+        currentUser = mAuth.getCurrentUser(); // 로그인 되어 있는 정보 (현서 11/13일 )
         database = FirebaseDatabase.getInstance();
-        codylistRef = database.getReference().child("users").child(currentUser.getUid()).child("codylist"); //코디리스트
+        codylistRef = database.getReference().child("users").child(currentUser.getUid()).child("codylist"); //코디리스트 (현서 11/13일 )
 
+
+        final ArrayList<CodyItem> codylist = new ArrayList<>();      //코디 리스트를 위한 ArrayList 초기화 (현서 11/13일 )
         final GridView gridView = view.findViewById(R.id.mycody_gridview);
 
-
+        // 파이어베이스의 데이터베이스의 실시간 데이터를 받아옴 ( 현서 11/13일 )
         ValueEventListener mValueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull final DataSnapshot snapshot) {
-                codylist.clear();
+                codylist.clear(); // 중복방지 clear ( 현서 11/13일 )
                 for (final DataSnapshot datasnapshot : snapshot.getChildren()) {
                     CodyItem codyItem = datasnapshot.getValue(CodyItem.class);
                     codyItem.setTitle(datasnapshot.getKey());
+                    // 등록된 코디리스트 ArrayList에 추가 ( 현서 11/13일 )
                     codylist.add(codyItem);
                 }
+
+                // adapter에 적용 ( 현서 11/13일 )
                 MyCodyAdapter adapter = new MyCodyAdapter(getActivity(),codylist);
                 gridView.setAdapter(adapter);
-
-
-
-
             }
 
             @Override
@@ -79,7 +82,6 @@ public class MyCodyFragment extends Fragment {
             }
         };
         codylistRef.addValueEventListener(mValueEventListener);
-
         return view;
     }
     View.OnClickListener onClickListener = new View.OnClickListener(){

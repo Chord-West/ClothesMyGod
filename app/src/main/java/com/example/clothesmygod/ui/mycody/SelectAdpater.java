@@ -24,19 +24,17 @@ import com.google.firebase.storage.StorageReference;
 import java.util.List;
 
 public class SelectAdpater extends BaseAdapter {
+
     private List<PostData> mDataList;
     private Context context;
-    FirebaseDatabase database;
     StorageReference mStorageRef = FirebaseStorage.getInstance().getReference();
+    //SelectCategory 의 context와 data를 받기 위한 생성자 // (현서 11/14일 )
     public SelectAdpater(Context context,List<PostData> mDataList) {
         this.context = context;
         this.mDataList = mDataList;
 
     }
-//    public SelectAdpater(List<PostData> mDataList) {
-//        this.mDataList = mDataList;
-//
-//    }
+
     @Override
     public int getCount() {
         return mDataList.size();
@@ -81,8 +79,8 @@ public class SelectAdpater extends BaseAdapter {
                 System.out.println(newState);
             }
         });
-
-        StorageReference clothesimgRef = mStorageRef.child("users").child(postdata.getUid()).child(postdata.getTitle());
+        //선택된 아이템에 User의 UID의 옷 이름에 따라서  Storage의 똑같은 파일을 다운받아서 ImageView에 고정 (현서 11/14 )
+        StorageReference clothesimgRef = mStorageRef.child("users").child(postdata.getUid()).child(postdata.getTitle()+".jpg");
         clothesimgRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
             @Override
             public void onComplete(@NonNull Task<Uri> task) {
