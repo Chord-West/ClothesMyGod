@@ -7,39 +7,56 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Board {
-    public String author;
-    public String title;
-    public String content;
+    private String author;
+    private String title;
+    private String content;
+    private String key;
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public Board(String author, String title, String content) {
+        this.author = author;
+        this.title = title;
+        this.content = content;
+    }
     public Board(){}
 
-    public Board(String author, String title, String content){
-        this.author=author;
-        this.title=title;
-        this.content=content;
+    public String getAuthor() {
+        return author;
     }
 
     public void setAuthor(String author) {
         this.author = author;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getContent() {
+        return content;
     }
 
     public void setContent(String content) {
         this.content = content;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getContent() {
-        return content;
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("author", author);
+        result.put("title", title);
+        result.put("content", content);
+        return result;
     }
 }

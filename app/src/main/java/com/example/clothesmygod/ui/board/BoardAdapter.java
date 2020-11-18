@@ -64,9 +64,9 @@ public class BoardAdapter extends BaseAdapter {
             holder = (ViewHolder)convertView.getTag();
         }
         Board board = data.get(position);
-        holder.boardAuthor.setText(board.author);
-        holder.boardTitle.setText(board.title);
-        holder.boardContent.setText(board.content);
+        holder.boardAuthor.setText(board.getAuthor());
+        holder.boardTitle.setText(board.getTitle());
+        holder.boardContent.setText(board.getContent());
         return convertView;
     }
     public class ViewHolder{

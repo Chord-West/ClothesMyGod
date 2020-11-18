@@ -93,7 +93,7 @@
             android:id="@+id/mycloset_post_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#F5ECFF"
+            android:background="@color/color_background"
             android:src="@drawable/clothes_plus2" />
     </LinearLayout>
 </LinearLayout>
