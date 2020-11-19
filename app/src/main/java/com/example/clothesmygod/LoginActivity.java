@@ -67,8 +67,6 @@ public class LoginActivity extends AppCompatActivity {
                             // 로그인 성공시 ( 현서 11/3일 )
                             if (task.isSuccessful()) {
                                 FirebaseUser user =mAuth.getCurrentUser();
-                                String currentUserEmail=user.getEmail();
-
                                 Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                                 startActivity(intent);
                             } else {

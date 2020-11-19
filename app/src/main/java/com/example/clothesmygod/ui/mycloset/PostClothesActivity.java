@@ -65,7 +65,6 @@ public class PostClothesActivity extends AppCompatActivity {
 
         // firebase storage 인스턴스화  ( 현서 11/8일 )
         mStorageRef = FirebaseStorage.getInstance().getReference();
-
  //         유저에게 갤러리에 접근할 수 있게 권한 요청하는 작업  ( 현서 11/8일 )
         if (ContextCompat.checkSelfPermission(PostClothesActivity.this, Manifest.permission.READ_CONTACTS) !=
                 PackageManager.PERMISSION_GRANTED) {

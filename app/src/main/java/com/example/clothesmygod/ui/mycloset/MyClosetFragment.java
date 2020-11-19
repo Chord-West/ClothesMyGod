@@ -49,13 +49,7 @@ public class MyClosetFragment extends Fragment{
         database = FirebaseDatabase.getInstance();
         // User 의 옷정보 ( 현서 11/8일 )
         userclothesRef = database.getReference().child("users").child(currentUser.getUid());
-
-
         view.findViewById(R.id.mycloset_post_btn).setOnClickListener(onClickListener); // 옷등록 버튼 ( 현서 11/8일 )
-
-
-
-
         // 등록된 옷을 나열하기 위한 grid view ( 현서 11/8일 )
         final GridView gridView = view.findViewById(R.id.mycloset_gridview);
 
@@ -72,9 +66,7 @@ public class MyClosetFragment extends Fragment{
                     dataList.add(postData);
                 }
                 MyClosetAdapter adapter = new MyClosetAdapter(getActivity(),dataList); // Adapter의 적용   ( 현서 11/8일 )
-                gridView.setAdapter(adapter);
-
-                //길게 아이템 클릭시 아이템 처리 ( 현서 11/8일 )
+                gridView.setAdapter(adapter); //길게 아이템 클릭시 아이템 처리 ( 현서 11/8일 )
                 gridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                     @Override
                     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -92,8 +84,7 @@ public class MyClosetFragment extends Fragment{
                                 userclothesRef.child("bottom").child(delete).removeValue();
                                 userclothesRef.child("shoes").child(delete).removeValue();
                             }
-                        });
-                        // 취소 ( 현서 11/16일 )
+                        }); // 취소 ( 현서 11/16일 )
                         builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -101,7 +92,6 @@ public class MyClosetFragment extends Fragment{
                                 dialog.cancel();
                             }
                         });
-
                         AlertDialog alertDialog = builder.create();
                         alertDialog.show();
                         return true;

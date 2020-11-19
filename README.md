@@ -118,17 +118,24 @@
 
 ---
 
-#### 1. 로그인, 회원가입 ( Firebase Auth 사용 )
+#### 1. 로그인, 회원가입 
+
+<div style="display:flex; justify-content : space-evenly;">
+    <img src="https://user-images.githubusercontent.com/50789483/99502579-9b3f2b00-29c0-11eb-8097-9f9f60bda919.png" style="width:300px; height:400px;" />
+	<img src="https://user-images.githubusercontent.com/50789483/99502215-1ce28900-29c0-11eb-8bbd-8069ebe2a83a.png" style="width:300px; height:400px;" />
+</div>
 
 
 
-- ##### 회원가입
+- ##### 회원가입 ( Firebase Auth 사용 )
 
-  <div style="display:flex; justify-content:space-around;">
+  <div>
   	<img src="https://i.imgur.com/Bf97WeF.png" style="width:800px; height:400px;" />
+      <img src="https://user-images.githubusercontent.com/50789483/99500383-a6448c00-29bd-11eb-94a2-481c20d8becc.PNG" style="width:800px; height:400px;" />
   </div>
 
   
+
 
   - 회원가입 버튼 클릭시 Edittext가 null 값인 경우 "아이디와 비밀번호를 모두 입력해주세요." 라는 Toast 메세지 출력.
 
@@ -146,17 +153,26 @@
 
 
 
+<div>
+	<img src="https://i.imgur.com/t2uSs1v.png" style="width:800px; height:400px; margin-bottom : 50px" />
+    	<img src="https://i.imgur.com/6nUutXo.png" style="width:800px; height:400px;" />
+</div>
+
 - Firebase RealTimeDatabase, Storage 사용
   
   - User의 데이터베이스에 저장된 카테고리 별로 저장된 옷의 이름을 Storage와 연동시켜 화면에 출력
   
-    <div>
-    	<img src="https://i.imgur.com/t2uSs1v.png" style="width:800px; height:400px;" />
-        	<img src="https://i.imgur.com/6nUutXo.png" style="width:800px; height:400px;" />
-    </div>
+    
   
-  
-  
+
+
+
+<div style="display:flex; justify-content : space-evenly;">
+    <img src="https://user-images.githubusercontent.com/50789483/99527109-9b9aee80-29df-11eb-905c-6af0be7e40dd.PNG" style="width:300px; height:400px;" />
+	<img src="https://user-images.githubusercontent.com/50789483/99527159-af465500-29df-11eb-9628-58396ac78243.PNG" style="width:300px; height:400px;" />
+    <img src="https://user-images.githubusercontent.com/50789483/99527203-c5ecac00-29df-11eb-8193-dd4d985bc2c3.PNG" style="width:300px; height:400px;" />
+</div>
+
 - 메인
   
   -  GridView 의 Adapter에서 Glide API를 통해서 Firebase Storage의 저장된 파일들을 URI로 불러와서 User가 가진 카테고리의 옷이름과 일치하면 ViewHolder를 통해 ImageView에 고정시켜 화면에 출력시킴.  
@@ -179,6 +195,11 @@
 
 
 
+<div style="display:flex; justify-content : space-evenly;">
+    <img src="https://user-images.githubusercontent.com/50789483/99527109-9b9aee80-29df-11eb-905c-6af0be7e40dd.PNG" style="width:300px; height:400px;" />
+	<img src="https://user-images.githubusercontent.com/50789483/99527159-af465500-29df-11eb-9628-58396ac78243.PNG" style="width:300px; height:400px;" />
+    <img src="https://user-images.githubusercontent.com/50789483/99527203-c5ecac00-29df-11eb-8193-dd4d985bc2c3.PNG" style="width:300px; height:400px;" />
+
 - 메인
 
   - Firebase의 User의 UID에서 Child("codylist")에 CodyItem들을 객체를 불러와 Glide 객체를 통해서 카테고리별로 일치하는 이름을 Storage와 일치하면 Imageview와 TextView에 각각 고정 후 출력.
@@ -194,7 +215,4 @@
 
     
 
-
-
-#### 
 
