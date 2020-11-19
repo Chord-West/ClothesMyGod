@@ -27,11 +27,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title"
-        android:visibility="visible"/>
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <TextView
         android:id="@+id/dayTextView"
@@ -80,10 +80,8 @@
 
     <Button
         android:id="@+id/cha_Btn"
-        android:layout_width="0dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="메모 수정"
         android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/save_Btn"
@@ -92,8 +90,8 @@
 
     <Button
         android:id="@+id/save_Btn"
-        android:layout_width="106dp"
-        android:layout_height="37dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
         android:text="저장"
         android:visibility="invisible"
@@ -102,14 +100,23 @@
 
     <Button
         android:id="@+id/del_Btn"
-        android:layout_width="120dp"
-        android:layout_height="36dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="288dp"
-        android:layout_marginTop="4dp"
         android:text="삭제"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contextEditText"></Button>
+        app:layout_constraintTop_toBottomOf="@+id/contextEditText"/>
+
+    <Button
+        android:id="@+id/get_Btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="내 코디 목록 가져오기"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cha_Btn">
+
+    </Button>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

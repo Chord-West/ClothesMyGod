@@ -73,6 +73,7 @@ public class MyCodyFragment extends Fragment {
 
                 // adapter에 적용 ( 현서 11/13일 )
                 MyCodyAdapter adapter = new MyCodyAdapter(getActivity(),codylist);
+
                 gridView.setAdapter(adapter);
             }
 

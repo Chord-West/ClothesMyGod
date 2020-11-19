@@ -1,6 +1,7 @@
 package com.example.clothesmygod.ui.calendar;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,9 +22,10 @@ public class CalendarActivity extends AppCompatActivity {
     public String fname=null;
     public String str=null;
     public CalendarView calendarView;
-    public Button cha_Btn,del_Btn,save_Btn;
+    public Button cha_Btn,del_Btn,save_Btn, get_Btn;
     public TextView dayTextView,textView2,title;
     public EditText contextEditText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +36,7 @@ public class CalendarActivity extends AppCompatActivity {
         save_Btn=findViewById(R.id.save_Btn);
         del_Btn=findViewById(R.id.del_Btn);
         cha_Btn=findViewById(R.id.cha_Btn);
+        get_Btn=findViewById(R.id.get_Btn);
         textView2=findViewById(R.id.textView2);
         title=findViewById(R.id.title);
         contextEditText=findViewById(R.id.contextEditText);
@@ -65,6 +68,13 @@ public class CalendarActivity extends AppCompatActivity {
                 contextEditText.setVisibility(View.INVISIBLE);
                 textView2.setVisibility(View.VISIBLE);
 
+            }
+        });
+        get_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_list = new Intent(getApplicationContext(), MyCodyListActivity.class);
+                startActivity(intent_list);
             }
         });
     }
