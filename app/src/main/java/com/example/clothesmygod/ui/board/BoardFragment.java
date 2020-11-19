@@ -62,7 +62,6 @@ public class BoardFragment extends Fragment {
                }
                BoardAdapter adapter = new BoardAdapter(boardData);
                listView.setAdapter(adapter);
-
                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                    @Override
                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
