@@ -3,7 +3,7 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_height="match_parent"
 android:layout_width="match_parent"
 android:orientation="vertical"
-android:background="#F5ECFF"
+android:background="@color/color_background"
 xmlns:android="http://schemas.android.com/apk/res/android">
 <LinearLayout
     android:layout_width="match_parent"
@@ -19,7 +19,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="#D3BCE4"
+        android:background="@color/color_line"
         android:layout_marginBottom="20dp"
         />
 <FrameLayout
@@ -43,8 +43,8 @@ xmlns:android="http://schemas.android.com/apk/res/android">
         android:id="@+id/board_post_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#F5ECFF"
+        android:background="@color/color_background"
         android:layout_marginEnd="10dp"
-        android:src="@drawable/plus" />
+        android:src="@drawable/clothes_plus" />
 </LinearLayout>
 </LinearLayout>

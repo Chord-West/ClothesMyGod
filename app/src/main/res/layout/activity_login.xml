@@ -6,15 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity"
     android:orientation="vertical"
-    android:background="@drawable/background">
-    <TextView
+    android:background="@drawable/main_back">
+    <ImageView
         android:id="@+id/login_title"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="70dp"
         android:layout_marginBottom="66dp"
-        android:text="@string/title"
-        android:textSize="36sp"
+        android:src="@drawable/logotext"
         android:gravity="center"/>
     <LinearLayout
         android:layout_width="match_parent"
@@ -50,7 +50,7 @@
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:background="@drawable/login_button"
-            android:textColor="#5E0C7B"
+            android:textColor="#ffffff"
             android:textSize="21sp"
             android:text="로그인"/>
         <Button

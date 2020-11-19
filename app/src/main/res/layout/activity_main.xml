@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="#F5ECFF">
+    android:background="@color/color_background">
 <!--    프래그먼트를위해 필요-->
     <Button
         android:id="@+id/logout_btn"
@@ -31,7 +31,7 @@
             android:id="@+id/main_mycloset_btn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="#F5ECFF"
+            android:background="@color/color_background"
             android:layout_weight="1"
             android:src="@drawable/mycloset" />
         <ImageButton
@@ -40,19 +40,19 @@
             android:layout_height="match_parent"
             android:src="@drawable/calendar"
             android:layout_weight="1"
-            android:background="#F5ECFF"/>
+            android:background="@color/color_background"/>
         <ImageButton
             android:id="@+id/main_mycody_btn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="#F5ECFF"
+            android:background="@color/color_background"
             android:layout_weight="1"
             android:src="@drawable/cody"/>
         <ImageButton
             android:id="@+id/main_board_btn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="#F5ECFF"
+            android:background="@color/color_background"
             android:layout_weight="1"
             android:src="@drawable/help"/>
     </LinearLayout>

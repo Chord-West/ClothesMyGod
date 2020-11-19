@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/other_background"
+    android:background="@color/color_background"
     >
     <TextView
         android:id="@+id/select_category"
