@@ -152,20 +152,10 @@
 #### 2. 내 옷장
 
 
-
-<div>
-	<img src="https://i.imgur.com/t2uSs1v.png" style="width:800px; height:400px; margin-bottom : 50px" />
-    	<img src="https://i.imgur.com/6nUutXo.png" style="width:800px; height:400px;" />
-</div>
-
 - Firebase RealTimeDatabase, Storage 사용
   
   - User의 데이터베이스에 저장된 카테고리 별로 저장된 옷의 이름을 Storage와 연동시켜 화면에 출력
   
-    
-  
-
-
 
 <div style="display:flex; justify-content : space-evenly;">
     <img src="https://user-images.githubusercontent.com/50789483/99527109-9b9aee80-29df-11eb-905c-6af0be7e40dd.PNG" style="width:300px; height:400px;" />
@@ -173,14 +163,40 @@
     <img src="https://user-images.githubusercontent.com/50789483/99527203-c5ecac00-29df-11eb-8193-dd4d985bc2c3.PNG" style="width:300px; height:400px;" />
 </div>
 
+
+
 - 메인
   
-  -  GridView 의 Adapter에서 Glide API를 통해서 Firebase Storage의 저장된 파일들을 URI로 불러와서 User가 가진 카테고리의 옷이름과 일치하면 ViewHolder를 통해 ImageView에 고정시켜 화면에 출력시킴.  
+  - GridView 의 Adapter에서 Glide API를 통해서 Firebase Storage의 저장된 파일들을 URI로 불러와서 User가 가진 카테고리의 옷이름과 일치하면 ViewHolder를 통해 ImageView에 고정시켜 화면에 출력시킴.  
+  
+  - <div>
+    	<img src="https://i.imgur.com/t2uSs1v.png" style="width:600px; height:300px; margin-bottom : 50px" />
+        	<img src="https://i.imgur.com/6nUutXo.png" style="width:600px; height:200px;" />
+    </div>
   
 - 옷 등록
   
-  - Radix Group을 통해 카테고리 선택가능.
+  <div>
+  	<img src="https://user-images.githubusercontent.com/50789483/99636903-71047080-2a87-11eb-97da-9602ca6222ec.png" style="width:700px; height:200px; margin-bottom : 50px" />
+      <img src="https://user-images.githubusercontent.com/50789483/99638031-03f1da80-2a89-11eb-8e58-bbbbe8d66280.PNG" style="width:400px; height:200px;" />	
+      <img src="https://user-images.githubusercontent.com/50789483/99637980-ee7cb080-2a88-11eb-8dc5-23866fae9c14.PNG" style="width:400px; height:200px;" />
+  </div>
+  
+  
+  - 옷등록을 하기전에  ImageView에 핸드폰 갤러리에서 가져온 이미지를 고정 하기 위해서 
     
+    먼저  유저에게 갤러리에 접근할 수 있게하는 권한 요청하는 READ_EXTERNAL_STORAGE을 실시
+    
+  - Allow 클릭시, 갤러리에 접근 가능하고, 이미지 클릭시 onActivityResult를 통해서 REQUSET_CODE
+    
+    일치 시  
+    
+    
+    
+  - Radix Group을 통해 카테고리 선택가능.
+  
+    
+  
   - 옷의 이름과 카테고리가 User 정보의 저장됨.
   
     
@@ -196,9 +212,9 @@
 
 
 <div style="display:flex; justify-content : space-evenly;">
-    <img src="https://user-images.githubusercontent.com/50789483/99527109-9b9aee80-29df-11eb-905c-6af0be7e40dd.PNG" style="width:300px; height:400px;" />
-	<img src="https://user-images.githubusercontent.com/50789483/99527159-af465500-29df-11eb-9628-58396ac78243.PNG" style="width:300px; height:400px;" />
-    <img src="https://user-images.githubusercontent.com/50789483/99527203-c5ecac00-29df-11eb-8193-dd4d985bc2c3.PNG" style="width:300px; height:400px;" />
+    <img src="https://user-images.githubusercontent.com/50789483/99635942-11599580-2a86-11eb-9b2f-fef07b2a4681.PNG" style="width:300px; height:400px;" />
+	<img src="https://user-images.githubusercontent.com/50789483/99635968-1f0f1b00-2a86-11eb-99c2-070e41d0eee6.PNG" style="width:300px; height:400px;" />
+    <img src="https://user-images.githubusercontent.com/50789483/99636011-2df5cd80-2a86-11eb-910f-f210f1f06dc0.PNG" style="width:300px; height:400px;" />
 
 - 메인
 
