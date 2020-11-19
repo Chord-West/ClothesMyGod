@@ -10,12 +10,13 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import com.example.clothesmygod.R;
-
+//by 최나라 (20-11-15)
 public class CalendarFragment extends Fragment {
     private View v;
 
     private ImageView imageView;
-    private Button cal_Btn;
+    private Button cal_Btn; //calendarActivity로 이동하는 버튼
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -27,6 +28,8 @@ public class CalendarFragment extends Fragment {
         return v;
 
     }
+
+    //calendarActivity로 이동하기 위한 함수
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
