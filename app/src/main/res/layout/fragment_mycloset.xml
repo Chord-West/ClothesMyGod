@@ -21,7 +21,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="#D3BCE4"
+        android:background="@color/color_line"
         android:layout_marginBottom="20dp"
         />
     <GridLayout
@@ -93,7 +93,7 @@
             android:id="@+id/mycloset_post_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#F5ECFF"
-            android:src="@drawable/plus" />
+            android:background="@color/color_background"
+            android:src="@drawable/clothes_plus2" />
     </LinearLayout>
 </LinearLayout>

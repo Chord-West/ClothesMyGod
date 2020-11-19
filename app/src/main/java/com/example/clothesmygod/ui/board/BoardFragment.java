@@ -57,10 +57,21 @@ public class BoardFragment extends Fragment {
                boardData.clear();
                for (DataSnapshot datasnapshot : snapshot.getChildren()) {
                    Board board = datasnapshot.getValue(Board.class);
+                   board.setKey(datasnapshot.getKey());
                    boardData.add(board);
                }
                BoardAdapter adapter = new BoardAdapter(boardData);
                listView.setAdapter(adapter);
+               listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                   @Override
+                   public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                       String data=boardData.get(i).getKey();
+                       Intent intent = new Intent(getActivity(),BoardActivity.class);
+                       intent.putExtra("key",data);
+                       startActivity(intent);
+
+                   }
+               });
            }
 
            @Override

@@ -5,6 +5,7 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.clothesmygod.R;
@@ -23,57 +24,91 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyCodyListActivity extends AppCompatActivity {
-    private ListView listView;
     private FirebaseAuth mAuth;
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private FirebaseDatabase mDatabase;
+    private DatabaseReference mReference;
+    private ChildEventListener mChild;
     FirebaseUser currentUser;
-    FirebaseDatabase database;
-    DatabaseReference codylistRef;
-    StorageReference mStorageRef;
-    ArrayAdapter adapter;
 
-
+    private ListView listView;
+    private ArrayAdapter<String> adapter;
+    List<Object> Array = new ArrayList<Object>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mycodylist);
 
+        listView = (ListView) findViewById(R.id.codylist);
 
+        initDatabase();
+
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, new ArrayList<String>());
+        listView.setAdapter(adapter);
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
-        database = FirebaseDatabase.getInstance();
-        mStorageRef = FirebaseStorage.getInstance().getReference();
-        codylistRef = database.getReference().child("users");
-        listView= (ListView)findViewById(R.id.codylist);
-        final ArrayList<CodyList> codyLists =  new ArrayList<>();
-
-
-
-
-        adapter = new ArrayAdapter<String>(this, R.layout.activity_listitem, fileList);
-
-        listView.setAdapter(adapter);
-
-
-            // Read from the database
-        codylistRef.child("codylist").addValueEventListener(new ValueEventListener() {
-
+        mReference = mDatabase.getReference("users").child(currentUser.getUid()).child("codylist");
+        mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                adapter.clear();
 
-                for (DataSnapshot fileSnapshot : dataSnapshot.getChildren()) {
-                    CodyList str = fileSnapshot.getKey(CodyList.class);
-                    codyLists.add(str);
-                    adapter.add(str);
+                for(DataSnapshot listData : dataSnapshot.getChildren()){
+                    String cody = listData.getKey();
+                    Array.add(cody);
+                    adapter.add(cody);
                 }
                 adapter.notifyDataSetChanged();
-                listView.setSelection(adapter);
+                listView.setSelection(adapter.getCount()-1);
             }
+
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("error");
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
+    }
+    private void initDatabase() {
+
+        mDatabase = FirebaseDatabase.getInstance();
+
+        mReference = mDatabase.getReference("log");
+        mReference.child("log").setValue("check");
+
+        mChild = new ChildEventListener() {
+
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+        mReference.addChildEventListener(mChild);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mReference.removeEventListener(mChild);
     }
 
 };
