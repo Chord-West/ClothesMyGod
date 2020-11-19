@@ -112,6 +112,7 @@ public class PostClothesActivity extends AppCompatActivity {
                                     System.out.println(taskSnapshot.toString()); //이미지 업로드 성공시 Main Activity로 이동 ( 현서 11/8일 )
                                     Intent intent = new Intent(PostClothesActivity.this, MainActivity.class);
                                     startActivity(intent);
+                                    finish();
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {

@@ -26,6 +26,7 @@
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
         android:gravity="center"
+        android:background="@drawable/navbar_wrap"
         android:weightSum="4">
         <ImageButton
             android:id="@+id/main_mycloset_btn"

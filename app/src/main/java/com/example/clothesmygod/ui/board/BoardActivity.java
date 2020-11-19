@@ -60,6 +60,7 @@ public class BoardActivity extends AppCompatActivity {
                 Comment comment =new Comment(author,content);
                 if(!content.equals("")){
                     DBRef.child("comment").push().setValue(comment);
+                    board_edit.setText("");
                 }
                 else{
                     Toast.makeText(BoardActivity.this,"내용을 입력하세요",Toast.LENGTH_SHORT).show();
