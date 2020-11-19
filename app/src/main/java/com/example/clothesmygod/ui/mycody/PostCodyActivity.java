@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.clothesmygod.MainActivity;
 import com.example.clothesmygod.Model.CodyItem;
 import com.example.clothesmygod.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -122,11 +123,9 @@ public class PostCodyActivity extends AppCompatActivity {
                         userclothesRef.child("codylist").updateChildren(childUpdates); // user / codylist 에  {top,bottom, shoes } 오브젝트 형식으로 저장  (  현서 11/15 일 )
                         userclothesRef.child("tmp_data").removeValue(); //일시적으로 생성했던 오브젝트 데이터 삭제 (  현서 11/15 일 )
                         // MyCodyFragment로 이동  (  현서 11/15 일 )
-                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                        MyCodyFragment myCodyFragment = new MyCodyFragment();
-                        transaction.replace(R.id.frame, myCodyFragment);
-                        transaction.addToBackStack(null);
-                        transaction.commit();
+                        Intent intent4 = new Intent(PostCodyActivity.this, MainActivity.class);
+                        startActivity(intent4);
+                        finish();
                     }else{
                         Toast.makeText(getApplicationContext(),"이미지를 모두 등록 해주세요", Toast.LENGTH_SHORT).show();
                     }
@@ -136,9 +135,9 @@ public class PostCodyActivity extends AppCompatActivity {
                     userclothesRef.child("tmp_data").removeValue();
                     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                     MyCodyFragment myCodyFragment = new MyCodyFragment();
-                    transaction.replace(R.id.frame, myCodyFragment);
-                    transaction.addToBackStack(null);
-                    transaction.commit();
+                    Intent intent4 = new Intent(PostCodyActivity.this, MainActivity.class);
+                    startActivity(intent4);
+                    finish();
                     break;
             }
         }

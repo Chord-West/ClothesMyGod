@@ -17,6 +17,7 @@
         <activity android:name=".ui.mycloset.PostClothesActivity" />
         <activity android:name=".ui.calendar.MyCodyListActivity"/>
         <activity android:name=".ui.board.PostBoardActivity" />
+        <activity android:name=".ui.board.BoardActivity" />
         <activity android:name=".MainActivity"/>
         <activity android:name=".SignUpActivitiy"/>
         <activity android:name=".LoginActivity" />
