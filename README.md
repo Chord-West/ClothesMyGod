@@ -63,12 +63,18 @@
    ┃ ┃ ┗ 📂example
    ┃ ┃ ┃ ┗ 📂clothesmygod
    ┃ ┃ ┃ ┃ ┣ 📂Model
+   ┃ ┃ ┃ ┃ ┃ ┣ 📜Board.java
    ┃ ┃ ┃ ┃ ┃ ┣ 📜CodyItem.java
+   ┃ ┃ ┃ ┃ ┃ ┣ 📜Comment.java
    ┃ ┃ ┃ ┃ ┃ ┗ 📜PostData.java
    ┃ ┃ ┃ ┃ ┃ 
    ┃ ┃ ┃ ┃ ┣ 📂ui
    ┃ ┃ ┃ ┃ ┃ ┣ 📂board
-   ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜BoardFragment.java
+   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜BoardActivity.java
+   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜BoardAdapter.java
+   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜BoardFragment.java
+   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CommentAdapter.java
+   ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜PostBoardActivity.java
    ┃ ┃ ┃ ┃ ┃ ┃ 
    ┃ ┃ ┃ ┃ ┃ ┣ 📂calendar
    ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CalendarFragment.java
@@ -87,16 +93,34 @@
    ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜SelectAdpater.java
    ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SelectCategory.java
    ┃ ┃ ┃ ┃ ┃ 
-   ┃ ┃ ┃ ┃ ┣ 📜LoginActivity.java
-   ┃ ┃ ┃ ┃ ┣ 📜MainActivity.java
-   ┃ ┃ ┃ ┃ ┣ 📜SignUpActivitiy.java
-   ┃ ┃ ┃ ┃ ┗ 📜SplashActivity.java
+   ┃ ┃ ┃ ┃ ┃ ┣ 📜LoginActivity.java
+   ┃ ┃ ┃ ┃ ┃ ┣ 📜MainActivity.java
+   ┃ ┃ ┃ ┃ ┃ ┣ 📜SignUpActivitiy.java
+   ┃ ┃ ┃ ┃ ┃ ┗ 📜SplashActivity.java
    ┣ 📂res
+   ┃ ┣ 📂drawable
+   ┃ ┃ ┣ 📜board_wrap.xml
+   ┃ ┃ ┣ 📜cody_wrap.xml
+   ┃ ┃ ┣ 📜comment_wrap.xml
+   ┃ ┃ ┣ 📜edittext_border.xml
+   ┃ ┃ ┣ 📜login_button.xml
+   ┃ ┃ ┣ 📜menu_button.xml
+   ┃ ┃ ┣ 📜nabvar_wrap.xml
+   ┃ ┃ ┣ 📜register_button.xml
+   ┃ ┃ ┣ 📜register_eidt.xml
+   ┃ ┃ ┗ 📜splash.xml
+   ┃ ┃ 
    ┃ ┣ 📂layout
+   ┃ ┃ ┣ 📜activity_board.xml
    ┃ ┃ ┣ 📜activity_login.xml
    ┃ ┃ ┣ 📜activity_main.xml
    ┃ ┃ ┣ 📜activity_mycodylist.xml
    ┃ ┃ ┣ 📜activity_signup.xml
+   ┃ ┃
+   ┃ ┃ ┣ 📜board_list.xml
+   ┃ ┃ ┣ 📜board_post.xml
+   ┃ ┃
+   ┃ ┃ ┣ 📜comment_list.xml
    ┃ ┃
    ┃ ┃ ┣ 📜fragment_board.xml
    ┃ ┃ ┣ 📜fragment_calendar.xml
@@ -107,7 +131,7 @@
    ┃ ┃ ┣ 📜mycloset_post_clothes.xml
    ┃ ┃
    ┃ ┃ ┣ 📜mycody_item.xml
-   ┃ ┣ 📜mycody_postcody.xml
+   ┃ ┃ ┣ 📜mycody_postcody.xml
    ┃ ┃ ┣ 📜mycody_select_category.xml
    ┃ ┃ ┗ 📜mycody_select_item.xml
    ┗ 📜AndroidManifest.xml
@@ -226,5 +250,10 @@
 
 #### 2017 소프트웨어학과 정현구
 
-#### 2019 소프트웨어확과 박채연
+> - front-end
+> - splash 화면
+> - 질문게시판 ()
+> 
+
+#### 2019 소프트웨어학과 박채연
 
