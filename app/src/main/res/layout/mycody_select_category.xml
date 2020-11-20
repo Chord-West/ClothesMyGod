@@ -18,7 +18,11 @@
    <GridView
        android:layout_marginTop="10dp"
        android:id="@+id/select_gridview"
+       android:numColumns="auto_fit"
+       android:verticalSpacing="20dp"
+       android:padding="20dp"
        android:layout_width="match_parent"
+       android:layout_marginStart="20dp"
        android:layout_height="400dp"/>
     <Button
         android:layout_marginTop="30dp"

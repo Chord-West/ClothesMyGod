@@ -152,8 +152,7 @@ public class PostCodyActivity extends AppCompatActivity {
         }
         if(requestCode==REQUEST_CODE){ //이미지를 성공적으로 받아왔을 때 (  현서 11/15 일 )
             String comeback = data.getStringExtra("comeback"); // 가져온 상의, 하의, 신발 중의 아이템 이름(  현서 11/15 일 )
-
-
+            
             // 파이어베이스의 데이터베이스의 실시간 데이터를 받아옴 ( 현서 11/15일 )
             userclothesRef.child("tmp_data").child(category).setValue(comeback);
             ValueEventListener mValueEventListener = new ValueEventListener() {
