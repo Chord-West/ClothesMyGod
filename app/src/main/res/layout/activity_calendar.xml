@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
     <TextView
@@ -14,8 +13,7 @@
         android:gravity="center"
         android:text="Calendar"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#9E28B3"
-        android:textSize="18sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/del_Btn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,11 +25,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title"
-        android:visibility="visible"/>
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <TextView
         android:id="@+id/dayTextView"
@@ -80,11 +78,12 @@
 
     <Button
         android:id="@+id/cha_Btn"
-        android:layout_width="0dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/menu_button"
         android:text="메모 수정"
+        android:textColor="#ffffff"
+        android:textSize="15sp"
         android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/save_Btn"
         app:layout_constraintStart_toStartOf="parent"
@@ -92,24 +91,44 @@
 
     <Button
         android:id="@+id/save_Btn"
-        android:layout_width="106dp"
-        android:layout_height="37dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
+        android:background="@drawable/menu_button"
         android:text="저장"
+        android:textColor="#ffffff"
+        android:textSize="15sp"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/contextEditText" />
 
     <Button
         android:id="@+id/del_Btn"
-        android:layout_width="120dp"
-        android:layout_height="36dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="288dp"
-        android:layout_marginTop="4dp"
+        android:background="@drawable/menu_button"
         android:text="삭제"
+        android:textColor="#ffffff"
+        android:textSize="15sp"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contextEditText"></Button>
+        app:layout_constraintTop_toBottomOf="@+id/contextEditText" />
+
+    <Button
+        android:id="@+id/get_Btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/menu_button"
+        android:text="내 코디 목록 확인하기"
+        android:textColor="#ffffff"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cha_Btn">
+
+    </Button>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
