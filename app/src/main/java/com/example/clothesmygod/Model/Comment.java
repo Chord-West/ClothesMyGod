@@ -5,7 +5,7 @@ import com.google.firebase.database.Exclude;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Comment {
+public class Comment { //게시판 안에 댓글 데이터 모델 (정현구)
     private String author;
     private String content;
     private String key;

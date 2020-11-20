@@ -18,7 +18,7 @@
             android:layout_height="140dp"
             android:layout_marginTop="10dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/shirts"/>
+            android:src="@drawable/clothes_wrap"/>
         <TextView
             android:id="@+id/select_item_title"
             android:layout_width="match_parent"

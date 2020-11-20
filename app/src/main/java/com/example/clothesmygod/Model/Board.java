@@ -6,7 +6,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Board {
+public class Board { //게시판 데이터 모델 (정현구)
     private String author;
     private String title;
     private String content;
