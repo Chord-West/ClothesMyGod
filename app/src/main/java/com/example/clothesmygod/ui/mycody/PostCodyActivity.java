@@ -208,13 +208,16 @@ public class PostCodyActivity extends AppCompatActivity {
                         }
                     }
                 }
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                     System.out.println("error");
                 }
             };
             userclothesRef.addValueEventListener(mValueEventListener);
+        }else{
+            Intent intent = new Intent(PostCodyActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
         }
     }
 }

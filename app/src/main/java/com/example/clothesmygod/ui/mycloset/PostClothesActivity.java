@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.example.clothesmygod.MainActivity;
 import com.example.clothesmygod.R;
+import com.example.clothesmygod.ui.mycody.PostCodyActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -162,6 +163,11 @@ public class PostClothesActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+        else{
+            Intent intent = new Intent(PostClothesActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
         }
 
     }
