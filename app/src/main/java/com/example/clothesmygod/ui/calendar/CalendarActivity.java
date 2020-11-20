@@ -134,7 +134,6 @@ public class CalendarActivity extends AppCompatActivity {
                     del_Btn.setVisibility(View.INVISIBLE);
                     contextEditText.setVisibility(View.VISIBLE);
                     save_Btn.setVisibility(View.VISIBLE);
-                    contextEditText.setText(str);
                     //removeDiary함수 실행
                     removeDiary(fname);
                 }
