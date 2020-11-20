@@ -14,6 +14,7 @@ import java.util.List;
 
 public class CommentAdapter extends BaseAdapter {
     List<Comment> data;
+    //댓글 데이터를 받기위한 생성자         (정현구)
     CommentAdapter(List<Comment> data){
         this.data=data;
     }
@@ -53,6 +54,7 @@ public class CommentAdapter extends BaseAdapter {
         holder.commentContent.setText(comment.getContent());
         return convertView;
     }
+    //item 고정을 위한 holder         (정현구)
     public class ViewHolder{
         TextView commentAuthor;
         TextView commentContent;

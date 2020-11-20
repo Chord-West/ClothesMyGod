@@ -27,6 +27,7 @@ import java.util.List;
 
 public class BoardAdapter extends BaseAdapter {
     List<Board> data;
+    //게시판의 data를 받기위한 생성자         (정현구)
     BoardAdapter(List<Board> data){
         this.data=data;
     }
@@ -69,6 +70,7 @@ public class BoardAdapter extends BaseAdapter {
         holder.boardContent.setText(board.getContent());
         return convertView;
     }
+    //item 고정을 위한 holder         (정현구)
     public class ViewHolder{
         TextView boardAuthor;
         TextView boardTitle;

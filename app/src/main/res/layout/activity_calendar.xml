@@ -117,7 +117,7 @@
 
     <Button
         android:id="@+id/get_Btn"
-        android:layout_width="match_parent"
+        android:layout_width="390dp"
         android:layout_height="wrap_content"
         android:background="@drawable/menu_button"
         android:text="내 코디 목록 확인하기"

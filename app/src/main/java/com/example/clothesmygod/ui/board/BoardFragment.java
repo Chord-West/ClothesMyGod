@@ -43,25 +43,33 @@ public class BoardFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        //fragment를 위한 view     (정현구)
         view = inflater.inflate(R.layout.fragment_board,container,false);
         view.findViewById(R.id.board_post_btn).setOnClickListener(onClickListener);
+        //firebase에 있는 데이터를 출력할 ListView     (정현구)
+        //이벤트 리스너 안에서 사용하기위해서 final로 선언     (정현구)
         final ListView listView = (ListView)view.findViewById(R.id.board_listView);
         final ArrayList<Board> boardData = new ArrayList<>();
-
+        //firebase 읽기를 위한 db
         DatabaseReference db = FirebaseDatabase.getInstance().getReference();
         DatabaseReference boardDBRef = db.child("board");
 
+        //firebase Realtime Database의 정보를 얻기위한 이벤트 리스너      (정현구)
        ValueEventListener mValueEventListener = new ValueEventListener() {
            @Override
            public void onDataChange(@NonNull DataSnapshot snapshot) {
+               //중복 데이터 출력 제거를 위하여 clear     (정현구)
                boardData.clear();
+               //Board의 모델 객체를 생성하여 db에서 데이터를 객체에 저장후 boardData에 add      (정현구)
                for (DataSnapshot datasnapshot : snapshot.getChildren()) {
                    Board board = datasnapshot.getValue(Board.class);
                    board.setKey(datasnapshot.getKey());
                    boardData.add(board);
                }
+               //데이터를 BoardAdapter를 사용하여 ListView에 담기      (정현구)
                BoardAdapter adapter = new BoardAdapter(boardData);
                listView.setAdapter(adapter);
+               //리스트뷰 item 클릭 리스너, 클릭시 item의 키값을 intent로 넘겨서 게시판 출력      (정현구)
                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                    @Override
                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -69,11 +77,9 @@ public class BoardFragment extends Fragment {
                        Intent intent = new Intent(getActivity(),BoardActivity.class);
                        intent.putExtra("key",data);
                        startActivity(intent);
-
                    }
                });
            }
-
            @Override
            public void onCancelled(@NonNull DatabaseError error) {
 
@@ -82,15 +88,14 @@ public class BoardFragment extends Fragment {
        boardDBRef.addValueEventListener(mValueEventListener);
         return view;
     }
-
+    //클릭 이벤트리스너 (정현구)
     View.OnClickListener onClickListener = new View.OnClickListener(){
         @Override
         public void onClick(View v) {
-            switch (v.getId()){
-                case R.id.board_post_btn:
-                    Intent intent = new Intent(getActivity(), PostBoardActivity.class);
-                    startActivity(intent);
-                    break;
+            //게시판 포스트 페이지로 이동
+            if (v.getId() == R.id.board_post_btn) {
+                Intent intent = new Intent(getActivity(), PostBoardActivity.class);
+                startActivity(intent);
             }
         }
     };

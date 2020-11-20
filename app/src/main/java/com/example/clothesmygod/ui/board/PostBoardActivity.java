@@ -39,29 +39,29 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PostBoardActivity extends AppCompatActivity {
-    private FirebaseAuth mAuth; // 현재 유저정보 불러오기 위한 메소드
-    FirebaseUser currentUser; // 현재 유저에 storage 저장
-    private DatabaseReference mDatabase;
-    Button postBoardBtn; // 마지막 등록 버튼
-    Board board;
+    //firebase 사용을 위한 선언        (정현구)
+    private FirebaseAuth mAuth= FirebaseAuth.getInstance(); //유저 정보를 사용        (정현구)
+    private DatabaseReference mDatabase= FirebaseDatabase.getInstance().getReference();//Realtime Database 사용        (정현구)
+    FirebaseUser currentUser= mAuth.getCurrentUser(); //현재 유저 정보 저장        (정현구)
+    Button postBoardBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.board_post);
 
-        mAuth = FirebaseAuth.getInstance();
-        currentUser = mAuth.getCurrentUser();
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-
-        postBoardBtn = findViewById(R.id.post_board_btn);// 등록버튼
+        postBoardBtn = findViewById(R.id.post_board_btn); //게시물 등록 버튼         (정현구)
+        // 버튼 클릭 리스너         (정현구)
         postBoardBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String author = currentUser.getEmail();
+                String author = currentUser.getEmail(); //현재 유저의 이메일 정보를 글쓴이에 저장         (정현구)
+                //글 제목과 내용은 각각의 EditText의 내용을 String 형태로 저장         (정현구)
                 String post_name = ((EditText) findViewById(R.id.post_board_name)).getText().toString();
                 String post_content = ((EditText) findViewById(R.id.post_board_content)).getText().toString();
-                Board board =new Board(author,post_name,post_content);
+                Board board =new Board(author,post_name,post_content); // board 객체를 위에 내용으로 생성
+                //게시글의 내용중 빈내용이 있을시에 Toast메세지 출력        (정현구)
+                //없을시에는 RealtimeDatabase의 "board"하위에 board객체형태로 push        (정현구)
                 if(!post_content.equals("") && !post_name.equals("")) {
                     mDatabase.child("board").push().setValue(board);
                     Intent intent = new Intent(PostBoardActivity.this, MainActivity.class);
