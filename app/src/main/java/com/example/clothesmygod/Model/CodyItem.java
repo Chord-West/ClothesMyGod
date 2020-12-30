@@ -10,6 +10,11 @@ public class CodyItem {
     private String bottom;
     private String shoes;
     private String title;
+    public CodyItem(String top, String bottom, String shoes) {
+        this.top = top;
+        this.bottom = bottom;
+        this.shoes = shoes;
+    }
     public CodyItem() {
 
     }
@@ -22,11 +27,7 @@ public class CodyItem {
         this.title = title;
     }
 
-    public CodyItem(String top, String bottom, String shoes) {
-        this.top = top;
-        this.bottom = bottom;
-        this.shoes = shoes;
-    }
+
 
     public String getTop() {
         return top;

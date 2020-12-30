@@ -79,7 +79,6 @@ public class MyClosetAdapter extends BaseAdapter {
                     //Glide 메소드를 통해 다운받은 URI를  ImageView에 고정 (현서 11/12 )
                     Glide.with(context).load(task.getResult()).override(150,150).into(holder.closetImage);
                 }else{
-
                 }
             }
         });

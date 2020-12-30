@@ -273,12 +273,12 @@ private void singUp(){
                       final ArrayList<PostData> dataList = new ArrayList<>();
                       dataList.clear(); // 중복 출력을 막기위한 Data Clear  ( 현서 11/8일 )
                       for (final DataSnapshot datasnapshot : snapshot.child(category).getChildren()) { ;
-                          final String clothes= datasnapshot.getValue().toString(); // User의 옷 이름을 저장   ( 현서 11/8일 )
-                          PostData postData = new PostData(currentUser.getUid(),clothes); // User의 Uid와 옷정보를 객체로 저장  ( 현서 11/8일 )
+                          final String clothes= datasnapshot.getValue().toString(); 
+                          PostData postData = new PostData(currentUser.getUid(),clothes); 
                           dataList.add(postData);
                       }
-                      MyClosetAdapter adapter = new MyClosetAdapter(getActivity(),dataList); // Adapter의 적용   ( 현서 11/8일 )
-                      gridView.setAdapter(adapter); //길게 아이템 클릭시 아이템 처리 ( 현서 11/8일 )
+                      MyClosetAdapter adapter = new MyClosetAdapter(getActivity(),dataList); 
+                      gridView.setAdapter(adapter); 
                       gridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                           @Override
                           public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -358,27 +358,26 @@ private void singUp(){
                       PackageManager.PERMISSION_GRANTED) 
       {
        if(ActivityCompat.shouldShowRequestPermissionRationale(PostClothesActivity.this,Manifest.permission.READ_EXTERNAL_STORAGE)){
-      
       }else{
            ActivityCompat.requestPermissions(PostClothesActivity.this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},REQUEST_EXTERNAL_STORAGE_PERMISSION);
        }
-              }else{
+          }else{
               }
       //(중략)
       ```
-
       
 
-    - Allow 클릭시 갤러리에 접근 권한을 얻게 되고. 사진 클릭시 onActivityResult 메소드를 통해서 이미지를 성공적으로 받아 왔을 때 
-
-      image를 bitmap으로 변환해서 `PostClothesActivity.class`에 있는 imageView에 선택한 이미지 삽입 
-
-      <div>
+      
+- Allow 클릭시 갤러리에 접근 권한을 얻게 되고. 사진 클릭시 onActivityResult 메소드를 통해서 이미지를 성공적으로 받아 왔을 때 
+    
+  image를 bitmap으로 변환해서 `PostClothesActivity.class`에 있는 imageView에 선택한 이미지 삽입 
+    
+  <div>
           <img src="https://user-images.githubusercontent.com/50789483/99638031-03f1da80-2a89-11eb-8e58-bbbbe8d66280.PNG" style="width:400px; height:200px;" />	
           <img src="https://user-images.githubusercontent.com/50789483/99637980-ee7cb080-2a88-11eb-8dc5-23866fae9c14.PNG" style="width:400px; height:200px;" />
       </div>
-
-      ```java
+    
+  ```java
       @Override // intent를 통해 이미지를 성공적으로 받아 왔을 떄 처리 ( 현서 11/8일 )
           protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
               super.onActivityResult(requestCode, resultCode, data);
@@ -394,9 +393,9 @@ private void singUp(){
               }
           }
       ```
-
   
 
+  
 - #### mycody
 
   - ##### MyCodyFragment.class
@@ -523,6 +522,8 @@ private void singUp(){
 
 
 
+
+
 #### 2. 내 옷장
 
 
@@ -573,3 +574,4 @@ private void singUp(){
 
 
 
+### 차별성 및 발전할 점 
